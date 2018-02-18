@@ -6,6 +6,7 @@ npm-debug.log
 *.pyc
 *.komodoproject
 /nbproject/private/
+dist/
 
 tests/compile/main_compressed.js
 tests/compile/*compiler*.jar
