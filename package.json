@@ -1,5 +1,5 @@
 {
-  "name": "blockly",
+  "name": "milo-blocks",
   "version": "1.0.0",
   "description": "Blockly is a library for building visual programming editors.",
   "keywords": [
@@ -7,25 +7,26 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/google/blockly.git"
+    "url": "https://github.com/4and4/milo-blocks.git"
   },
   "bugs": {
-    "url": "https://github.com/google/blockly/issues"
+    "url": "https://github.com/4and4/milo-blocks/issues"
   },
   "homepage": "https://developers.google.com/blockly/",
   "author": {
     "name": "Neil Fraser"
   },
+  "main": "./dist/blockly.js",
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "tests/scripts/test_setup.sh",
-    "test": "node tests/jsunit/test_runner.js"
+    "test:lint": "eslint .",
+    "prepublish": "python buildjs.py && webpack",
+    "test:setup": "tests/scripts/test_setup.sh",
+    "test:unit": "node tests/jsunit/test_runner.js",
+    "test": "npm run test:lint && npm run test:setup && npm run test:unit",
+    "version": "json -f package.json -I -e \"this.repository.sha = '$(git log -n1 --pretty=format:%H)'\""
   },
   "license": "Apache-2.0",
   "private": true,
-  "devDependencies": {
-    "eslint": "2.9.0"
-  },
   "jshintConfig": {
     "globalstrict": true,
     "predef": [
@@ -40,10 +41,18 @@
     "undef": true,
     "unused": true
   },
-  "dependencies": {
+  "devDependencies": {
     "install": "^0.8.8",
+    "dezalgo": "^1.0",
     "npm": "^4.4.4",
     "closure-library": "^1.43629075.2",
-    "webdriverio": "^4.6.2"
+    "webdriverio": "^4.6.2",
+    "copy-webpack-plugin": "4.0.1",
+    "eslint": "2.9.0",
+    "exports-loader": "0.6.3",
+    "graceful-fs": "4.1.11",
+    "imports-loader": "0.6.5",
+    "json": "9.0.4",
+    "webpack": "1.13.2"
   }
 }
