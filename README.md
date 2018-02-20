@@ -1,4 +1,4 @@
-# Blockly [![Build Status]( https://travis-ci.org/google/blockly.svg?branch=master)](https://travis-ci.org/google/blockly)
+# Blockly [![Build Status]( https://travis-ci.org/4and4/milo-blocks.svg?branch=master)](https://travis-ci.org/4and4/milo-blocks)
 
 
 Google's Blockly is a web-based, visual programming editor.  Users can drag
