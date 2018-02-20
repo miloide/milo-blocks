@@ -1,17 +1,13 @@
 <!--
   - Thanks for opening an issue for us!  Before you open an issue,
   - please check if a similar issue exists or has been closed before.
-  -
-  - If you're asking a question about how to use Blockly in your application,
-  - please ask questions on the mailing list, instead of filing issues:
-  -       https://groups.google.com/forum/#!forum/blockly
   -->
 
 ### Problem statement
 
 <!-- TODO: Please describe the problem.
   -        Is it a bug report (something didn't work the way you expected),
-  -        or a feature request (something new you think would improve Blockly)?
+  -        or a feature request (something new you think would improve MiloServer)?
   -->
 
 ### Expected Behavior
@@ -37,7 +33,7 @@
 
 ### Stack Traces
 
-<!-- TODO: Please open up the console.  If you see any Blockly-related errors,
+<!-- TODO: Please open up the console.  If you see any Milo-related errors,
   -        paste them between the quotes below.
   -
   - Ignore any instances of...
@@ -48,7 +44,8 @@
 Replace with error stack trace.
 ```
 
-### Operating System and Browser
+### Additional Information
+#### Operating System and Browser
 
 <!-- TODO: If this issue is browser specific, uncomment the systems you have tested. -->
 
@@ -67,7 +64,4 @@ Replace with error stack trace.
   * Browser [e.g. stock browser, safari]
   * Version [e.g. 22]
 -->
-
-### Additional Information
-
 <!-- Anything else we should know? -->
