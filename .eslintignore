@@ -12,3 +12,6 @@
 /accessible/*
 /appengine/*
 /externs/svg-externs.js
+/shim/*
+/dist/*
+*.config.js
