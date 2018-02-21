@@ -15,3 +15,14 @@ Blockly](https://developers.google.com/blockly/registration). The questionnaire 
 a few minutes and will help us better support the Blockly community.
 
 Want to contribute? Great! First, read [our guidelines for contributors](https://developers.google.com/blockly/guides/modify/contributing).
+
+## Building
+
+```
+
+npm install
+npm run prepare
+
+```
+
+Be sure to `npm run prepare` every time you make changes to code in milo-blocks.
