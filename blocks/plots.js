@@ -132,7 +132,7 @@ Blockly.defineBlocksWithJsonArray([{
 {
   "type": "plot_histogram",
   "lastDummyAlign0": "RIGHT",
-  "message0": "Histogram Plot %1 X %2 Label %3 Group By %4 Color %5",
+  "message0": "Histogram Plot %1 X %2 Label %3 Color %4",
   "args0": [
     {
       "type": "input_dummy"
@@ -147,12 +147,6 @@ Blockly.defineBlocksWithJsonArray([{
       "type": "input_value",
       "name": "NAME",
       "check": "String",
-      "align": "RIGHT"
-    },
-    {
-      "type": "input_value",
-      "name": "CLASS",
-      "check": "Array",
       "align": "RIGHT"
     },
     {
