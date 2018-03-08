@@ -121,7 +121,7 @@ var colour_hue = block.getFieldValue('HUE');
 var x_ = [], y_ = [];
 for(var i = -10;i <= 10; i++){
     x_.push(i);
-    var x = i;
+    x = i;
     y_.push(eval(expression));
 }
 var code = '{\n'+
