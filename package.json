@@ -18,8 +18,8 @@
   },
   "main": "./dist/blockly.js",
   "scripts": {
-    "test:lint": "eslint .",    
-    "prepare": "ln -s $(npm root)/google-closure-library ../closure-library && python buildjs.py && webpack",
+    "test:lint": "eslint .",
+    "prepare": "ln -sf $(npm root)/google-closure-library ../closure-library && python buildjs.py && webpack",
     "test:setup": "tests/scripts/test_setup.sh",
     "test:unit": "node tests/jsunit/test_runner.js",
     "test": "npm run test:lint && npm run test:setup && npm run test:unit",
