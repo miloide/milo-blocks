@@ -140,7 +140,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "check": ["String", "Array"]
       }
     ],
-    "output": "Number",
+    "output": "Array",
     "colour": "%{BKY_LISTS_HUE}",
     "tooltip": "%{BKY_LISTS_LENGTH_TOOLTIP}",
     "helpUrl": "%{BKY_LISTS_LENGTH_HELPURL}"
