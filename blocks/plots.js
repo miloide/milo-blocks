@@ -29,7 +29,7 @@ goog.require('Blockly');
 Blockly.defineBlocksWithJsonArray([{
   "type": "plot_scatter",
   "lastDummyAlign0": "RIGHT",
-  "message0": "Scatter %1 X %2 Y %3 Label %4 Color %5 %6 Draw Line %7",
+  "message0": "Scatter %1 X %2 Y %3 Label %4 Group By %5 Color %6 %7 Draw Line %8",
   "args0": [
     {
       "type": "input_dummy"
@@ -50,6 +50,12 @@ Blockly.defineBlocksWithJsonArray([{
       "type": "input_value",
       "name": "NAME",
       "check": "String",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "CLASS",
+      "check": "Array",
       "align": "RIGHT"
     },
     {
@@ -77,7 +83,7 @@ Blockly.defineBlocksWithJsonArray([{
 {
   "type": "plot_bar",
   "lastDummyAlign0": "RIGHT",
-  "message0": "Bar %1 X %2 Y %3 Label %4 Color %5 %6",
+  "message0": "Bar %1 X %2 Y %3 Label %4 Group By %5 Color %6 %7",
   "args0": [
     {
       "type": "input_dummy"
@@ -101,6 +107,12 @@ Blockly.defineBlocksWithJsonArray([{
       "align": "RIGHT"
     },
     {
+      "type": "input_value",
+      "name": "CLASS",
+      "check": "Array",
+      "align": "RIGHT"
+    },
+    {
       "type": "field_colour",
       "name": "HUE",
       "colour": "#ffffff"
@@ -120,7 +132,7 @@ Blockly.defineBlocksWithJsonArray([{
 {
   "type": "plot_histogram",
   "lastDummyAlign0": "RIGHT",
-  "message0": "Histogram Plot %1 X %2 Label %3 Color %4",
+  "message0": "Histogram Plot %1 X %2 Label %3 Group By %4 Color %5",
   "args0": [
     {
       "type": "input_dummy"
@@ -135,6 +147,12 @@ Blockly.defineBlocksWithJsonArray([{
       "type": "input_value",
       "name": "NAME",
       "check": "String",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "CLASS",
+      "check": "Array",
       "align": "RIGHT"
     },
     {

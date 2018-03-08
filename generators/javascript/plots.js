@@ -30,6 +30,7 @@ Blockly.JavaScript['plot_scatter'] = function(block) {
     var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
     var value_y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
     var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_class = Blockly.JavaScript.valueToCode(block, 'CLASS', Blockly.JavaScript.ORDER_ATOMIC);
     var colour_hue = block.getFieldValue('HUE');
     var checkbox_connect = block.getFieldValue('Connect') == 'TRUE';
 
@@ -38,6 +39,7 @@ Blockly.JavaScript['plot_scatter'] = function(block) {
         '"name":"'+ value_name +'"'+
         ',\n"x":'+ value_x +
         ',\n"y":'+ value_y +
+        ',\n"group":'+ value_class +
         ',\n"marker": {"color":"'+ colour_hue +'"}'+
         ',\n"isLine":'+ checkbox_connect +
         '\n},\n'
@@ -49,6 +51,7 @@ Blockly.JavaScript['plot_bar'] = function(block) {
     var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
     var value_y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
     var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_class = Blockly.JavaScript.valueToCode(block, 'CLASS', Blockly.JavaScript.ORDER_ATOMIC);
     var colour_hue = block.getFieldValue('HUE');
 
     var code = '{\n'+
@@ -56,6 +59,7 @@ Blockly.JavaScript['plot_bar'] = function(block) {
         '"name":"'+ value_name +'"'+
         ',\n"x":'+ value_x +
         ',\n"y":'+ value_y +
+        ',\n"group":'+ value_class +
         ',\n"marker": {"color":"'+ colour_hue +'"}'+
         '\n},\n'
     ;
@@ -65,12 +69,14 @@ Blockly.JavaScript['plot_bar'] = function(block) {
 Blockly.JavaScript['plot_histogram'] = function(block) {
     var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
     var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_class = Blockly.JavaScript.valueToCode(block, 'CLASS', Blockly.JavaScript.ORDER_ATOMIC);
     var colour_hue = block.getFieldValue('HUE');
     // TODO: Assemble JavaScript into code variable.
     var code = '{\n'+
         '"type":"histogram",\n'+
         '"name":"'+ value_name +'"'+
         ',\n"x":'+ value_x +
+        ',\n"group":'+ value_class +
         ',\n"marker": {"color":"'+ colour_hue +'"},'+
         '\n},\n'
     ;
