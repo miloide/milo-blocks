@@ -9,6 +9,8 @@ Fork of Google's Blockly project which is a framework for building web-based, vi
 
 Milo Blocks builds upon blockly with custom blocks for the [Milo IDE] (https://github.com/MiloServer)
 
+The complete documentation for the project can be found from [here](https://4and4.github.io)
+
 ## Building
 
 
