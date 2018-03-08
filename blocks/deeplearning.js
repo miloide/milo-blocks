@@ -157,7 +157,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   },
   {
     "type": "dl_get_scalar",
-    "message0": "Get Value %1",
+    "message0": "Text from Vector %1",
     "args0": [{
       "type": "input_value",
       "name": "NUM",
