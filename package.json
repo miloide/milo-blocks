@@ -18,7 +18,7 @@
   },
   "main": "./dist/blockly.js",
   "scripts": {
-    "test:lint": "eslint .",    
+    "test:lint": "eslint .",
     "prepare": "ln -sf $(npm root)/google-closure-library ../closure-library && python buildjs.py && webpack",
     "test:setup": "tests/scripts/test_setup.sh",
     "test:unit": "node tests/jsunit/test_runner.js",
