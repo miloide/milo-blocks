@@ -65,3 +65,38 @@ Blockly.Blocks['stats_pmf_operations'] = {
     this.setHelpUrl("");
   }
 };
+Blockly.Blocks['normal_distribution'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Normal Distribution");
+    this.appendValueInput("NAME1")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Mean");
+    this.appendValueInput("NAME2")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Variance");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+Blockly.Blocks['normal_distribution_getters'] = {
+  init: function() {
+    this.appendValueInput("NAME1")
+        .setCheck("gaussian")
+        .appendField("Get ")
+        .appendField(new Blockly.FieldDropdown([["pdf","pdf"], ["cdf","cdf"], ["ppf","ppf"]]), "NAME2")
+        .appendField("From Normal Distribution");
+    this.appendValueInput("NAME3")
+        .setCheck(["Array", "Number"])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("X");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("X can either be a number or a list of numbers");
+ this.setHelpUrl("");
+  }
+};

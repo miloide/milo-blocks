@@ -71,7 +71,6 @@ Blockly.JavaScript['plot_histogram'] = function(block) {
     var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
     var colour_hue = block.getFieldValue('HUE');
     // TODO: Assemble JavaScript into code variable.
-    if (value_class.length == 0) value_class = '""';
     var code = '{\n'+
         '"type":"histogram",\n'+
         '"name":"'+ value_name +'"'+
