@@ -72,6 +72,13 @@ Blockly.JavaScript['lists_length'] = function(block) {
   return [list + '.length', Blockly.JavaScript.ORDER_MEMBER];
 };
 
+Blockly.JavaScript['lists_numeric'] = function(block) {
+  // String or array length.
+  var list = Blockly.JavaScript.valueToCode(block, 'VALUE',
+      Blockly.JavaScript.ORDER_MEMBER) || '[]';
+  return [list + '.map(parseFloat)', Blockly.JavaScript.ORDER_MEMBER];
+};
+
 Blockly.JavaScript['lists_isEmpty'] = function(block) {
   // Is the string null or array empty?
   var list = Blockly.JavaScript.valueToCode(block, 'VALUE',
@@ -400,3 +407,31 @@ Blockly.JavaScript['lists_reverse'] = function(block) {
   var code = list + '.slice().reverse()';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
+
+/** For Milo IDE */
+
+Blockly.JavaScript['lists_split_math'] = function(block) {
+  // Block for splitting text into a list of numbers
+  var input = Blockly.JavaScript.valueToCode(block, 'INPUT',
+      Blockly.JavaScript.ORDER_MEMBER);
+  var delimiter = Blockly.JavaScript.valueToCode(block, 'DELIM',
+      Blockly.JavaScript.ORDER_NONE) || '\'\'';
+  if (!input) {
+      input = '\'\'';
+  }
+  var functionName = 'split';
+  var code = input + '.' + functionName + '(' + delimiter + ').map(parseFloat)';
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['lists_zip_with'] = function(block) {
+  // Create a list with any number of elements of any type.
+  var elements = new Array(block.itemCount_);
+  for (var i = 0; i < block.itemCount_; i++) {
+    elements[i] = Blockly.JavaScript.valueToCode(block, 'ADD' + i,
+        Blockly.JavaScript.ORDER_COMMA) || 'null';
+  }
+  var code = 'Datasets.zip(' + elements.join(', ') + ')';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+

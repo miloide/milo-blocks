@@ -64,6 +64,16 @@ Blockly.Msg.COLOUR_HUE = '20';
 Blockly.Msg.VARIABLES_HUE = '330';
 /// {{Notranslate}} Hue value for all procedure blocks.
 Blockly.Msg.PROCEDURES_HUE = '290';
+/// {{Notranslate}} Hue value for all ML blocks.
+Blockly.Msg.ML_HUE = "360";
+/// {{Notranslate}} Hue value for all image blocks.
+Blockly.Msg.IMAGE_HUE = "180";
+/// {{Notranslate}} Hue value for all plot blocks.
+Blockly.Msg.PLOT_HUE = "230";
+/// {{Notranslate}} Hue value for scatter plot block.
+Blockly.Msg.SCATTER_HUE = "130";
+/// {{Notranslate}} Hue value for histogram plot block.
+Blockly.Msg.HISTOGRAM_HUE = "60";
 
 /// default name - A simple, general default name for a variable, preferably short.
 /// For more context, see
@@ -828,6 +838,8 @@ Blockly.Msg.LISTS_CREATE_WITH_HELPURL = 'https://github.com/google/blockly/wiki/
 Blockly.Msg.LISTS_CREATE_WITH_TOOLTIP = 'Create a list with any number of items.';
 /// block text - See [https://github.com/google/blockly/wiki/Lists#create-list-with https://github.com/google/blockly/wiki/Lists#create-list-with].
 Blockly.Msg.LISTS_CREATE_WITH_INPUT_WITH = 'create list with';
+/// block text - Appears in Zip Lists Block (lists_zip_with)
+Blockly.Msg.LISTS_ZIP_INPUT_WITH = 'Zip Lists '
 /// block text - This appears in a sub-block when [https://github.com/google/blockly/wiki/Lists#changing-number-of-inputs changing the number of inputs in a ''''create list with'''' block].\n{{Identical|List}}
 Blockly.Msg.LISTS_CREATE_WITH_CONTAINER_TITLE_ADD = 'list';
 /// tooltip - See [https://github.com/google/blockly/wiki/Lists#changing-number-of-inputs https://github.com/google/blockly/wiki/Lists#changing-number-of-inputs].

@@ -350,3 +350,10 @@ Blockly.JavaScript['text_reverse'] = function(block) {
   var code = text + '.split(\'\').reverse().join(\'\')';
   return [code, Blockly.JavaScript.ORDER_MEMBER];
 };
+
+
+/** For Milo IDE */
+
+Blockly.JavaScript.text_log = function(a) {
+  return "console.webLog(" + (Blockly.JavaScript.valueToCode(a, "TEXT", Blockly.JavaScript.ORDER_NONE) || "''") + ");\n"
+};

@@ -1,11 +1,10 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2017-11-13 14:55:14.026613",
+		"lastupdated": "2018-03-08 17:45:07.021452",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
-	"VARIABLES_DEFAULT_NAME": "item",
 	"TODAY": "Today",
 	"DUPLICATE_BLOCK": "Duplicate",
 	"ADD_COMMENT": "Add Comment",
@@ -281,6 +280,7 @@
 	"LISTS_CREATE_WITH_HELPURL": "https://github.com/google/blockly/wiki/Lists#create-list-with",
 	"LISTS_CREATE_WITH_TOOLTIP": "Create a list with any number of items.",
 	"LISTS_CREATE_WITH_INPUT_WITH": "create list with",
+	"LISTS_ZIP_INPUT_WITH": "Zip Lists ",
 	"LISTS_CREATE_WITH_CONTAINER_TITLE_ADD": "list",
 	"LISTS_CREATE_WITH_CONTAINER_TOOLTIP": "Add, remove, or reorder sections to reconfigure this list block.",
 	"LISTS_CREATE_WITH_ITEM_TOOLTIP": "Add an item to the list.",
