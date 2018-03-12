@@ -1034,7 +1034,7 @@ Blockly.Blocks['create_list_from_range'] = {
         .appendField("and increment by")
         .appendField(new Blockly.FieldNumber(0), "increment");
     this.setOutput(true, null);
-    this.setColour(230);
+    this.setColour(Blockly.Blocks.lists.HUE);
     this.setTooltip("");
     this.setHelpUrl("");
   }

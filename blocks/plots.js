@@ -288,7 +288,7 @@ Blockly.Blocks['straight_line'] = {
         .appendField(new Blockly.FieldNumber(0), "constant");
     this.setOutput(true, null);
     this.setColour(230);
-    this.setTooltip("Mx + c Straight line");
+    this.setTooltip("Used to plot y=mx+c");
     this.setHelpUrl("");
   }
 };
