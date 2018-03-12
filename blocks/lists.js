@@ -1023,3 +1023,19 @@ Blockly.Blocks['lists_zip_with_item'] = {
     this.contextMenu = false;
   }
 };
+
+Blockly.Blocks['create_list_from_range'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Create list from range")
+        .appendField(new Blockly.FieldNumber(0), "min_range")
+        .appendField("to ")
+        .appendField(new Blockly.FieldNumber(0), "max_range")
+        .appendField("and increment by")
+        .appendField(new Blockly.FieldNumber(0), "increment");
+    this.setOutput(true, null);
+    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};

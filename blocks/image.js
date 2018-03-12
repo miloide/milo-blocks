@@ -57,10 +57,10 @@ Blockly.defineBlocksWithJsonArray([{
   "type": "img_show",
   "message0": "Show %1",
   "args0": [{
-        "type": "input_value",
-        "name": "IMG",
-        "check": "ImgDiv"
-      }],
+    "type": "input_value",
+    "name": "IMG",
+    "check": "ImgDiv"
+  }],
   "colour": "%{BKY_IMAGE_HUE}",
   "helpUrl": "",
   "previousStatement": true,

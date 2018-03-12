@@ -247,13 +247,48 @@ Blockly.Blocks['function_plot'] = {
   }
 };
 
-Blockly.Blocks['function_plot_x'] = {
+Blockly.Blocks['function_plot_x_var'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("x");
     this.setOutput(true, null);
     this.setColour(230);
     this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+Blockly.Blocks['function_plot_y'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(" Y =");
+    this.appendDummyInput()
+        .appendField("Evaluate X from");
+    this.appendDummyInput()
+        .appendField("range ")
+        .appendField(new Blockly.FieldNumber(0), "range_min")
+        .appendField("to ")
+        .appendField(new Blockly.FieldNumber(0), "range_max");
+    this.appendDummyInput()
+        .appendField("Increment by")
+        .appendField(new Blockly.FieldNumber(0), "increment");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("Mx + c Straight line");
+    this.setHelpUrl("");
+  }
+};
+Blockly.Blocks['straight_line'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldNumber(0), "slope")
+        .appendField("x +")
+        .appendField(new Blockly.FieldNumber(0), "constant");
+    this.setOutput(true, null);
+    this.setColour(230);
+    this.setTooltip("Used to plot y=mx+c");
     this.setHelpUrl("");
   }
 };

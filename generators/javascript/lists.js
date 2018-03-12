@@ -435,3 +435,18 @@ Blockly.JavaScript['lists_zip_with'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['create_list_from_range'] = function(block) {
+  var number_min_range = parseFloat(block.getFieldValue('min_range'));
+  var number_max_range = parseFloat(block.getFieldValue('max_range'));
+  var number_increment = parseFloat(block.getFieldValue('increment'));
+  
+  var create_list = new Array();
+  console.log(number_min_range,number_max_range,number_increment);
+  for(var i = number_min_range; i < number_max_range; i+=number_increment){
+    create_list.push(i);
+    console.log(i);
+  }
+  var code = '['+create_list+']';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code,Blockly.JavaScript.ORDER_ATOMIC];
+};

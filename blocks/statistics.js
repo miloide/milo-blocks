@@ -16,7 +16,7 @@
  */
 
 /**
- * @fileoverview Plot blocks for Milo (github.com/4and4/MiloServer).
+ * @fileoverview Statistics blocks for Milo (github.com/4and4/MiloServer).
  *
  *
  * @author Arjun Rao, Ayush Bihani
@@ -79,8 +79,8 @@ Blockly.Blocks['normal_distribution'] = {
         .appendField("Variance");
     this.setOutput(true, null);
     this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 Blockly.Blocks['normal_distribution_getters'] = {
@@ -96,7 +96,7 @@ Blockly.Blocks['normal_distribution_getters'] = {
         .appendField("X");
     this.setOutput(true, null);
     this.setColour(230);
- this.setTooltip("X can either be a number or a list of numbers");
- this.setHelpUrl("");
+    this.setTooltip("X can either be a number or a list of numbers");
+    this.setHelpUrl("");
   }
 };
