@@ -120,24 +120,24 @@ Blockly.JavaScript['function_plot_x_var'] = function(block){
 };
 
 Blockly.JavaScript['function_plot'] = function(block) {
-var expression = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-var colour_hue = block.getFieldValue('HUE');
-var x_ = [], y_ = [];
-for(var i = -10;i <= 10; i++){
-    x_.push(i);
-    x = i;
-    y_.push(eval(expression));
-}
-var code = '{\n'+
-        '"Function":'+ expression+
-        '\n, "type":"scatter",\n'+
-        '"name":"'+ "Function" +'"'+
-        ',\n"x":['+ x_ +']'+
-        ',\n"y":['+ y_ +']'+
-        ',\n"marker": {"color":"'+ colour_hue +'"}'+
-        ',\n"isLine":'+ true +
-        '\n},\n';
-return code;
+    var expression = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+    var colour_hue = block.getFieldValue('HUE');
+    var x_ = [], y_ = [];
+    for(var i = -10;i <= 10; i++){
+        x_.push(i);
+        x = i;
+        y_.push(eval(expression));
+    }
+    var code = '{\n'+
+            '"Function":'+ expression+
+            '\n, "type":"scatter",\n'+
+            '"name":"'+ "Function" +'"'+
+            ',\n"x":['+ x_ +']'+
+            ',\n"y":['+ y_ +']'+
+            ',\n"marker": {"color":"'+ colour_hue +'"}'+
+            ',\n"isLine":'+ true +
+            '\n},\n';
+    return code;
 };
 
 Blockly.JavaScript['function_plot_y'] = function(block) {
@@ -166,6 +166,6 @@ Blockly.JavaScript['function_plot_y'] = function(block) {
 Blockly.JavaScript['straight_line'] = function(block) {
   var number_slope = block.getFieldValue('slope');
   var number_constant = block.getFieldValue('constant');
-  var code = number_slope + '*x' + number_constant;
+  var code = number_slope + '*x + ' + number_constant;
   return [code, Blockly.JavaScript.ORDER_MULTIPLICATION];
 };
