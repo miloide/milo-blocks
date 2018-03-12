@@ -1035,7 +1035,7 @@ Blockly.Blocks['create_list_from_range'] = {
         .appendField(new Blockly.FieldNumber(0), "increment");
     this.setOutput(true, null);
     this.setColour(230);
- this.setTooltip("Mx + c Straight line");
+ this.setTooltip("");
  this.setHelpUrl("");
-  }
+}
 };

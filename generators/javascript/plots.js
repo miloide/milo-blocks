@@ -114,7 +114,7 @@ Blockly.JavaScript['plot_show'] = function(block) {
 };
 
 
-Blockly.JavaScript['function_plot_x'] = function(block){
+Blockly.JavaScript['function_plot_x_var'] = function(block){
     var code = 'x';
     return code;
 };
@@ -142,9 +142,9 @@ return code;
 
 Blockly.JavaScript['function_plot_y'] = function(block) {
   var expression = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-  var number_range_min = block.getFieldValue('range_min');
-  var number_range_max = block.getFieldValue('range_max');
-  var number_increment = block.getFieldValue('increment');
+  var number_range_min = parseFloat(block.getFieldValue('range_min'));
+  var number_range_max = parseFloat(block.getFieldValue('range_max'));
+  var number_increment = parseFloat(block.getFieldValue('increment'));
   var x_ = [], y_ = [];
   for(var i = number_range_min; i < number_range_max; i+=number_increment){
       x_.push(i);
@@ -157,7 +157,7 @@ Blockly.JavaScript['function_plot_y'] = function(block) {
         '"name":"'+ "Function" +'"'+
         ',\n"x":['+ x_ +']'+
         ',\n"y":['+ y_ +']'+
-        ',\n"marker": {"color":"'+ colour_hue +'"}'+
+        ',\n"marker": {"color":"'+ "" +'"}'+
         ',\n"isLine":'+ true +
         '\n},\n';
   return code;

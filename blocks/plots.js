@@ -247,7 +247,7 @@ Blockly.Blocks['function_plot'] = {
   }
 };
 
-Blockly.Blocks['function_plot_x'] = {
+Blockly.Blocks['function_plot_x_var'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("x");
