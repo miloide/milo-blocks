@@ -272,12 +272,12 @@ Blockly.Blocks['function_plot_y'] = {
         .appendField(new Blockly.FieldNumber(0), "range_max");
     this.appendDummyInput()
         .appendField("Increment by")
-        .appendField(new Blockly.FieldNumber(0), "increment");    
+        .appendField(new Blockly.FieldNumber(0), "increment");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
- this.setTooltip("Mx + c Straight line");
- this.setHelpUrl("");
+    this.setTooltip("Mx + c Straight line");
+    this.setHelpUrl("");
   }
 };
 Blockly.Blocks['straight_line'] = {
@@ -288,7 +288,7 @@ Blockly.Blocks['straight_line'] = {
         .appendField(new Blockly.FieldNumber(0), "constant");
     this.setOutput(true, null);
     this.setColour(230);
- this.setTooltip("Mx + c Straight line");
- this.setHelpUrl("");
+    this.setTooltip("Mx + c Straight line");
+    this.setHelpUrl("");
   }
 };

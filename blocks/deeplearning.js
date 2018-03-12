@@ -16,7 +16,7 @@
  */
 
 /**
- * @fileoverview Plot blocks for Milo (github.com/4and4/MiloServer).
+ * @fileoverview Deep learning blocks for Milo (github.com/4and4/MiloServer).
  *
  *
  * @author Arjun Rao, Ayush Bihani
