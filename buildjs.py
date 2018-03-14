@@ -59,11 +59,12 @@ if sys.version_info[0] != 2:
 
 for arg in sys.argv[1:len(sys.argv)]:
   if (arg != 'core' and
+      arg != 'blocks' and
       arg != 'accessible' and
       arg != 'generators' and
       arg != 'langfiles'):
     raise Exception("Invalid argument: \"" + arg + "\". Usage: build.py "
-        "<0 or more of accessible, core, generators, langfiles>")
+        "<0 or more of accessible, core, blocks, generators, langfiles>")
 
 import errno, glob, httplib, json, os, re, subprocess, threading, urllib
 
@@ -205,7 +206,7 @@ class Gen_compressed(threading.Thread):
     if ('accessible' in self.bundles):
       self.gen_accessible()
 
-    if ('core' in self.bundles or 'accessible' in self.bundles):
+    if ('blocks' in self.bundles or 'accessible' in self.bundles):
       self.gen_blocks()
 
     if ('generators' in self.bundles):
@@ -532,7 +533,7 @@ developers.google.com/blockly/guides/modify/web/closure""")
   full_search_paths.sort()  # Deterministic build.
 
   if (len(sys.argv) == 1):
-    args = ['core', 'accessible', 'generators', 'defaultlangfiles']
+    args = ['core','blocks', 'accessible', 'generators', 'defaultlangfiles']
   else:
     args = sys.argv
 
