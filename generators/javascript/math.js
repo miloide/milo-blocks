@@ -238,17 +238,17 @@ Blockly.JavaScript['math_on_list'] = function(block) {
     case 'SUM':
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_MEMBER) || '[]';
-      code = list + '.reduce(function(x, y) {return x + y;})';
+      code = list + '.map(parseFloat).reduce(function(x, y) {return x + y;})';
       break;
     case 'MIN':
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_COMMA) || '[]';
-      code = 'Math.min.apply(null, ' + list + ')';
+      code = 'Math.min.apply(null, ' + list + '.map(parseFloat))';
       break;
     case 'MAX':
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_COMMA) || '[]';
-      code = 'Math.max.apply(null, ' + list + ')';
+      code = 'Math.max.apply(null, ' + list + '.map(parseFloat))';
       break;
     case 'AVERAGE':
       // mathMean([null,null,1,3]) == 2.0.
@@ -261,7 +261,7 @@ Blockly.JavaScript['math_on_list'] = function(block) {
             '}']);
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
+      code = functionName + '(' + list + '.map(parseFloat))';
       break;
     case 'MEDIAN':
       // mathMedian([null,null,1,3]) == 2.0.
@@ -282,7 +282,7 @@ Blockly.JavaScript['math_on_list'] = function(block) {
             '}']);
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
+      code = functionName + '(' + list + '.map(parseFloat))';
       break;
     case 'MODE':
       // As a list of numbers can contain more than one mode,
@@ -321,7 +321,7 @@ Blockly.JavaScript['math_on_list'] = function(block) {
             '}']);
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
+      code = functionName + '(' + list + '.map(parseFloat))';
       break;
     case 'STD_DEV':
       var functionName = Blockly.JavaScript.provideFunction_(
@@ -340,7 +340,7 @@ Blockly.JavaScript['math_on_list'] = function(block) {
             '}']);
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
+      code = functionName + '(' + list + '.map(parseFloat))';
       break;
     case 'RANDOM':
       var functionName = Blockly.JavaScript.provideFunction_(
@@ -352,7 +352,7 @@ Blockly.JavaScript['math_on_list'] = function(block) {
             '}']);
       list = Blockly.JavaScript.valueToCode(block, 'LIST',
           Blockly.JavaScript.ORDER_NONE) || '[]';
-      code = functionName + '(' + list + ')';
+      code = functionName + '(' + list + '.map(parseFloat))';
       break;
     default:
       throw 'Unknown operator: ' + func;

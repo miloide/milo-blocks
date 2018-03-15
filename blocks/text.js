@@ -897,3 +897,22 @@ Blockly.Extensions.registerMutator('text_join_mutator',
 Blockly.Extensions.registerMutator('text_charAt_mutator',
     Blockly.Constants.Text.TEXT_CHARAT_MUTATOR_MIXIN,
     Blockly.Constants.Text.TEXT_CHARAT_EXTENSION);
+
+/** For Milo IDE */
+
+Blockly.Blocks.text_log = {
+  init: function() {
+    this.jsonInit({
+      message0: 'Print %1',
+      args0: [{
+        type: "input_value",
+        name: "TEXT"
+      }],
+      previousStatement: null,
+      nextStatement: null,
+      colour: Blockly.Blocks.texts.HUE,
+      tooltip: Blockly.Msg.TEXT_PRINT_TOOLTIP,
+      helpUrl: Blockly.Msg.TEXT_PRINT_HELPURL
+    });
+  }
+};
