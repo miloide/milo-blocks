@@ -122,18 +122,11 @@ Blockly.JavaScript['function_plot_x_var'] = function(block){
 Blockly.JavaScript['function_plot'] = function(block) {
     var expression = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
     var colour_hue = block.getFieldValue('HUE');
-    var x_ = [], y_ = [];
-    for(var i = -10;i <= 10; i++){
-        x_.push(i);
-        x = i;
-        y_.push(eval(expression));
-    }
+   
     var code = '{\n'+
-            '"Function":'+ expression+
+            '"Function":"'+ expression + '"' +
             '\n, "type":"scatter",\n'+
             '"name":"'+ "Function" +'"'+
-            ',\n"x":['+ x_ +']'+
-            ',\n"y":['+ y_ +']'+
             ',\n"marker": {"color":"'+ colour_hue +'"}'+
             ',\n"isLine":'+ true +
             '\n},\n';
@@ -145,18 +138,13 @@ Blockly.JavaScript['function_plot_y'] = function(block) {
   var number_range_min = parseFloat(block.getFieldValue('range_min'));
   var number_range_max = parseFloat(block.getFieldValue('range_max'));
   var number_increment = parseFloat(block.getFieldValue('increment'));
-  var x_ = [], y_ = [];
-  for(var i = number_range_min; i < number_range_max; i+=number_increment){
-      x_.push(i);
-      x = i;
-      y_.push(eval(expression));
-  }
   var code = '{\n'+
-        '"Function":'+ expression+
+        '"Function":"'+ expression +'"'+
         '\n, "type":"scatter",\n'+
         '"name":"'+ "Function" +'"'+
-        ',\n"x":['+ x_ +']'+
-        ',\n"y":['+ y_ +']'+
+        ',\n"min":'+ number_range_min +
+        ',\n"max":'+ number_range_max +
+        ',\n"inc":'+ number_increment +
         ',\n"marker": {"color":"'+ "" +'"}'+
         ',\n"isLine":'+ true +
         '\n},\n';

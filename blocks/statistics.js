@@ -28,6 +28,8 @@ goog.require('Blockly');
 
 Blockly.Blocks['stats_construct_pmf'] = {
   init: function() {
+    this.appendDummyInput()
+        .appendField("Probability Mass Function");
     this.appendValueInput("NAME")
         .setCheck(null)
         .appendField("Make")
@@ -98,5 +100,56 @@ Blockly.Blocks['normal_distribution_getters'] = {
     this.setColour(230);
     this.setTooltip("X can either be a number or a list of numbers");
     this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['stats_construct_cdf'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Cumulative Distribution Function");
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("Make")
+        .appendField(new Blockly.FieldDropdown([["CDF  from Pmf ","makeCdfFromPmf"], ["CDF from Hist","MakeCdfFromHist"], ["CDF  from List","MakeCdfFromList"]]), "NAME");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+}
+
+Blockly.Blocks['stats_cdf_get'] = {
+  init: function() {
+    this.appendValueInput("CDF")
+        .setCheck(null)
+        .appendField("From Cdf");
+    this.appendValueInput("OPCODE")
+        .setCheck("Number")
+        .appendField("get")
+        .appendField(new Blockly.FieldDropdown([["percentile","percentile"], ["value","inverse"], ["probability","probability"]]), "NAME")
+        .appendField("for");
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['stats_cdf_get'] = {
+  init: function() {
+    this.appendValueInput("VALUE")
+        .setCheck("Number")
+        .appendField("Insert value");
+    this.appendValueInput("PROB")
+        .setCheck("Number")
+        .appendField("with probability");
+    this.appendValueInput("CDF")
+        .setCheck("stats_cdf")
+        .appendField("to Cdf");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
   }
 };
