@@ -107,11 +107,11 @@ Blockly.Blocks['stats_construct_cdf'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Cumulative Distribution Function");
-    this.appendValueInput("NAME")
+    this.appendValueInput("SRC")
         .setCheck(null)
         .appendField("Make")
-        .appendField(new Blockly.FieldDropdown([["CDF  from Pmf ","makeCdfFromPmf"], ["CDF from Hist","MakeCdfFromHist"], ["CDF  from List","MakeCdfFromList"]]), "NAME");
-    this.setOutput(true, null);
+        .appendField(new Blockly.FieldDropdown([["CDF from Pmf ","makeCdfFromPmf"], ["CDF from Hist","MakeCdfFromHist"], ["CDF  from List","MakeCdfFromList"]]), "SRCTYPE");
+    this.setOutput(true, "stats_cdf");
     this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -121,20 +121,21 @@ Blockly.Blocks['stats_construct_cdf'] = {
 Blockly.Blocks['stats_cdf_get'] = {
   init: function() {
     this.appendValueInput("CDF")
-        .setCheck(null)
+        .setCheck("stats_cdf")
         .appendField("From Cdf");
-    this.appendValueInput("OPCODE")
+    this.appendValueInput("VALUE")
         .setCheck("Number")
         .appendField("get")
-        .appendField(new Blockly.FieldDropdown([["percentile","percentile"], ["value","inverse"], ["probability","probability"]]), "NAME")
+        .appendField(new Blockly.FieldDropdown([["percentile","percentile"], ["value","inverse"], ["probability","probability"]]), "OPCODE")
         .appendField("for");
     this.setColour(230);
+    this.setOutput(true, "Number");
  this.setTooltip("");
  this.setHelpUrl("");
   }
 };
 
-Blockly.Blocks['stats_cdf_get'] = {
+Blockly.Blocks['stats_cdf_insert'] = {
   init: function() {
     this.appendValueInput("VALUE")
         .setCheck("Number")

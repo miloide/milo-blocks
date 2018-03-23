@@ -59,28 +59,33 @@ Blockly.JavaScript['normal_distribution_getters'] = function(block) {
   var value_name1 = Blockly.JavaScript.valueToCode(block, 'NAME1', Blockly.JavaScript.ORDER_ATOMIC);
   var value_name3 = Blockly.JavaScript.valueToCode(block, 'NAME3', Blockly.JavaScript.ORDER_ATOMIC);
   var code = value_name1 + '.evaluate("' + dropdown_name2 + '", ' + value_name3 + ')';
-  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALLs];
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
 Blockly.JavaScript['stats_construct_cdf'] = function(block) {
-  var dropdown_name = block.getFieldValue('NAME');
-  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_name = block.getFieldValue('SRCTYPE');
+  var value_name = Blockly.JavaScript.valueToCode(block, 'SRC', Blockly.JavaScript.ORDER_ATOMIC);
   var code =  dropdown_name + '(' + value_name +')';
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
+
 
 Blockly.JavaScript['stats_cdf_get'] = function(block) {
   var value_cdf = Blockly.JavaScript.valueToCode(block, 'CDF', Blockly.JavaScript.ORDER_ATOMIC);
-  var dropdown_name = block.getFieldValue('OPVALUE');
-  var value_opcode = Blockly.JavaScript.valueToCode(block, 'OPCODE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = value_cdf + '.' + dropdown_name + '(' + value_opcode + ')' ;
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  console.log(value_cdf);
+  var dropdown_name = block.getFieldValue('OPCODE');
+  console.log(dropdown_name);
+  var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
+  console.log(value);
+  var code = value_cdf + '.' + dropdown_name + '(' + value + ')' ;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['stats_cdf_get'] = function(block) {
+
+Blockly.JavaScript['stats_cdf_insert'] = function(block) {
   var value_value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
   var value_prob = Blockly.JavaScript.valueToCode(block, 'PROB', Blockly.JavaScript.ORDER_ATOMIC);
   var value_cdf = Blockly.JavaScript.valueToCode(block, 'CDF', Blockly.JavaScript.ORDER_ATOMIC);
   var code = value_cdf + '.append(' + value_value +','+ value_prob +')';
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };

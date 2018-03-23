@@ -122,7 +122,7 @@ Blockly.JavaScript['function_plot_x_var'] = function(block){
 Blockly.JavaScript['function_plot'] = function(block) {
     var expression = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
     var colour_hue = block.getFieldValue('HUE');
-   
+
     var code = '{\n'+
             '"Function":"'+ expression + '"' +
             '\n, "type":"scatter",\n'+
@@ -156,4 +156,13 @@ Blockly.JavaScript['straight_line'] = function(block) {
   var number_constant = block.getFieldValue('constant');
   var code = number_slope + '*x + ' + number_constant;
   return [code, Blockly.JavaScript.ORDER_MULTIPLICATION];
+};
+
+
+Blockly.JavaScript['plot_distributions'] = function(block) {
+  var value_f = Blockly.JavaScript.valueToCode(block, 'F', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_label = Blockly.JavaScript.valueToCode(block, 'LABEL', Blockly.JavaScript.ORDER_ATOMIC);
+  var colour_color = block.getFieldValue('COLOR');
+  var code = '\n'+value_f+'.render('+ value_label + ',' +colour_color + ')\n';
+  return code;
 };
