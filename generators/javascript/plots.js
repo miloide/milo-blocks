@@ -163,6 +163,6 @@ Blockly.JavaScript['plot_distributions'] = function(block) {
   var value_f = Blockly.JavaScript.valueToCode(block, 'F', Blockly.JavaScript.ORDER_ATOMIC);
   var value_label = Blockly.JavaScript.valueToCode(block, 'LABEL', Blockly.JavaScript.ORDER_ATOMIC);
   var colour_color = block.getFieldValue('COLOR');
-  var code = '\n'+value_f+'.render('+ value_label + ',' +colour_color + ')\n';
+  var code = '\n'+value_f+'.render('+ value_label + ',"' +colour_color + '")\n';
   return code;
 };
