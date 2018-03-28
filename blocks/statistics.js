@@ -28,6 +28,8 @@ goog.require('Blockly');
 
 Blockly.Blocks['stats_construct_pmf'] = {
   init: function() {
+    this.appendDummyInput()
+        .appendField("Probability Mass Function");
     this.appendValueInput("NAME")
         .setCheck(null)
         .appendField("Make")
@@ -97,6 +99,58 @@ Blockly.Blocks['normal_distribution_getters'] = {
     this.setOutput(true, null);
     this.setColour(230);
     this.setTooltip("X can either be a number or a list of numbers");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['stats_construct_cdf'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Cumulative Distribution Function");
+    this.appendValueInput("SRC")
+        .setCheck(null)
+        .appendField("Make")
+        .appendField(new Blockly.FieldDropdown([["CDF from Pmf ","makeCdfFromPmf"], ["CDF from Hist","MakeCdfFromHist"], ["CDF  from List","MakeCdfFromList"]]), "SRCTYPE");
+    this.setOutput(true, "stats_cdf");
+    this.setColour(230);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+}
+
+Blockly.Blocks['stats_cdf_get'] = {
+  init: function() {
+    this.appendValueInput("CDF")
+        .setCheck("stats_cdf")
+        .appendField("From Cdf");
+    this.appendValueInput("VALUE")
+        .setCheck("Number")
+        .appendField("get")
+        .appendField(new Blockly.FieldDropdown([["percentile","percentile"], ["value","inverse"], ["probability","probability"]]), "OPCODE")
+        .appendField("for");
+    this.setColour(230);
+    this.setOutput(true, "Number");
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['stats_cdf_insert'] = {
+  init: function() {
+    this.appendValueInput("VALUE")
+        .setCheck("Number")
+        .appendField("Insert value");
+    this.appendValueInput("PROB")
+        .setCheck("Number")
+        .appendField("with probability");
+    this.appendValueInput("CDF")
+        .setCheck("stats_cdf")
+        .appendField("to Cdf");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip("");
     this.setHelpUrl("");
   }
 };

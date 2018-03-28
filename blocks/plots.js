@@ -292,3 +292,28 @@ Blockly.Blocks['straight_line'] = {
     this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['plot_distributions'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Probability Function");
+    this.appendValueInput("F")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("f(x)");
+    this.appendValueInput("LABEL")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Label");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Color")
+        .appendField(new Blockly.FieldColour("#ffffff"), "COLOR");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(345);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
