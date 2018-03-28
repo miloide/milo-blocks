@@ -113,8 +113,8 @@ Blockly.Blocks['stats_construct_cdf'] = {
         .appendField(new Blockly.FieldDropdown([["CDF from Pmf ","makeCdfFromPmf"], ["CDF from Hist","MakeCdfFromHist"], ["CDF  from List","MakeCdfFromList"]]), "SRCTYPE");
     this.setOutput(true, "stats_cdf");
     this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 }
 
@@ -130,8 +130,8 @@ Blockly.Blocks['stats_cdf_get'] = {
         .appendField("for");
     this.setColour(230);
     this.setOutput(true, "Number");
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
@@ -150,7 +150,7 @@ Blockly.Blocks['stats_cdf_insert'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
