@@ -154,3 +154,4 @@ Blockly.Blocks['stats_cdf_insert'] = {
     this.setHelpUrl("");
   }
 };
+
