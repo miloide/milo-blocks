@@ -25,23 +25,23 @@
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
-
-Blockly.Blocks['linear_regression'] = {
+Blockly.Blocks['regression'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Linear Regression");
-    this.appendValueInput("alpha")
-        .setCheck(null)
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Learning Rate : ");
+        .appendField("Perform")
+        .appendField(new Blockly.FieldDropdown([["Linear Regression","LinearRegression"], ["Logistic Regression","LogisticRegression"], ["Multi Class Logistic Regression","MultiClassLogistic"]]), "regression_type");
     this.appendValueInput("iterations")
-        .setCheck(null)
+        .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Iterations :");
+        .appendField("Number of Iterations");
+    this.appendValueInput("rate")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Learning Rate");
     this.appendValueInput("lambda")
-        .setCheck(null)
+        .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField(" lambda : ");
+        .appendField("Lambda");
     this.setOutput(true, "regression");
     this.setColour(230);
  this.setTooltip("");
@@ -49,7 +49,7 @@ Blockly.Blocks['linear_regression'] = {
   }
 };
 
-Blockly.Blocks['linear_regression_train'] = {
+Blockly.Blocks['regression_train'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Train Linear Regression with");
@@ -68,7 +68,7 @@ Blockly.Blocks['linear_regression_train'] = {
   }
 };
 
-Blockly.Blocks['linear_regression_test'] = {
+Blockly.Blocks['regression_test'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Test Linear Regression with");
@@ -82,7 +82,7 @@ Blockly.Blocks['linear_regression_test'] = {
         .appendField("Predict on ");
     this.setOutput(true, null);
     this.setColour(230);
- this.setTooltip(" \"Fits a linear regresion model on the data\"");
+ this.setTooltip(" \"Tests a linear regresion model on the data\"");
  this.setHelpUrl("");
   }
 };
