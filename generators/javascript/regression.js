@@ -31,6 +31,11 @@ Blockly.JavaScript['regression'] = function(block) {
   var value_iterations = Blockly.JavaScript.valueToCode(block, 'iterations', Blockly.JavaScript.ORDER_ATOMIC);
   var value_rate = Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC);
   var value_lambda = Blockly.JavaScript.valueToCode(block, 'lambda', Blockly.JavaScript.ORDER_ATOMIC);
+  var logistic_code;
+  if(dropdown_regression_type == "LogisticRegression"){
+    var threshold = Blockly.JavaScript.valueToCode(block, 'threshold', Blockly.JavaScript.ORDER_ATOMIC);
+    var groupBy = Blockly.JavaScript.valueToCode(block, 'group_by', Blockly.JavaScript.ORDER_ATOMIC);
+  }
   var code = 'new ' + dropdown_regression_type +'({ \n \t ' +'alpha:' + value_rate +',\n\t' + 'iterations: '+ value_iterations +',\n\t'+'lambda: '+value_lambda +'\n})' ;
   return [code, Blockly.JavaScript.ORDER_NONE];
 };

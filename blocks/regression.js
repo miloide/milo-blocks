@@ -25,49 +25,83 @@
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
-Blockly.Blocks['regression'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Perform")
-        .appendField(new Blockly.FieldDropdown([["Linear Regression","LinearRegression"], ["Logistic Regression","LogisticRegression"], ["Multi Class Logistic Regression","MultiClassLogistic"]]), "regression_type");
-    this.appendValueInput("iterations")
-        .setCheck("Number")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Number of Iterations");
-    this.appendValueInput("rate")
-        .setCheck("Number")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Learning Rate");
-    this.appendValueInput("lambda")
-        .setCheck("Number")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Lambda");
-    this.setOutput(true, "regression");
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['regression_train'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Train Regression with");
-    this.appendValueInput("regression_variable")
-        .setCheck("regression")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Regression");
-    this.appendValueInput("train")
-        .setCheck("Array")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Train on ");
-    this.setOutput(true, null);
-    this.setColour(230);
- this.setTooltip(" \"Fits a regresion model on the data\"");
- this.setHelpUrl("");
-  }
-};
-
+Blockly.defineBlocksWithJsonArray([
+    {
+        "type": "regression",
+        "message0": "Perform %1 %2 Number of Iterations : %3 Learning Rate : %4 Lambda %5",
+        "args0": [
+          {
+            "type": "field_dropdown",
+            "name": "regression_type",
+            "options": [
+              [
+                "Linear Regression",
+                "LinearRegression"
+              ],
+              [
+                "Logistic Regression",
+                "LogisticRegression"
+              ],
+              [
+                "Multi Class Logistic ",
+                "MultiClassLogistic"
+              ]
+            ]
+          },
+          {
+            "type": "input_dummy"
+          },
+          {
+            "type": "input_value",
+            "name": "iterations",
+            "check": "Number",
+            "align": "RIGHT"
+          },
+          {
+            "type": "input_value",
+            "name": "rate",
+            "check": "Number",
+            "align": "RIGHT"
+          },
+          {
+            "type": "input_value",
+            "name": "lambda",
+            "check": "Number",
+            "align": "RIGHT"
+          }
+        ],
+        "output": "regression",
+        "colour": 15,
+        "tooltip": "",
+        "helpUrl": "",
+        "mutator":"Check_Logistic",
+        "extension":"Check_Logistic_Extension"
+      },
+      {
+        "type": "regression_train",
+        "message0": "Train regressor classifier with  %1 Regression  %2 Train on %3",
+        "args0": [
+          {
+            "type": "input_dummy"
+          },
+          {
+            "type": "input_value",
+            "name": "regression_variable",
+            "check": "regresion",
+            "align": "RIGHT"
+          },
+          {
+            "type": "input_value",
+            "name": "train",
+            "align": "RIGHT"
+          }
+        ],
+        "output": "model",
+        "colour": 15,
+        "tooltip": "",
+        "helpUrl": "",
+      }
+]);
 Blockly.Blocks['regression_test'] = {
   init: function() {
     this.appendDummyInput()
@@ -86,3 +120,71 @@ Blockly.Blocks['regression_test'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Constants.Math.Check_Logistic_Extension = function() {
+    this.getField('regression_type').setValidator(function(option) {
+      var LogisticInput = (option == 'LogisticRegression');
+      this.sourceBlock_.updateShape_(LogisticInput);
+    });
+  };
+
+/**
+ * Mixin for mutator functions in the 'check_logistic mutator'
+ * extension.
+ * @mixin
+ * @augments Blockly.Block
+ * @package
+ */
+Blockly.Constants.Check_Logistic = {
+    /**
+     * Create XML to represent whether the 'Logistic' is chosen
+     * @return {Element} XML storage element.
+     * @this Blockly.Block
+     */
+    mutationToDom: function() {
+      var container = document.createElement('mutation');
+      var LogisticInput = (this.getFieldValue('regression_type') == 'LogisticRegression');
+      console.log(LogisticInput);
+      container.setAttribute('logistic_input', LogisticInput);
+      return container;
+    },
+    /**
+     * Parse XML to restore the 'divisorInput'.
+     * @param {!Element} xmlElement XML storage element.
+     * @this Blockly.Block
+     */
+    domToMutation: function(xmlElement) {
+      var LogisticInput = (xmlElement.getAttribute('logistic_input') == 'true');
+      this.updateShape_(LogisticInput);
+    },
+    /**
+     * Modify this block to have (or not have) an input for 'is divisible by'.
+     * @param {boolean} Logistic True if this block has a divisor input.
+     * @private
+     * @this Blockly.Block
+     */
+    updateShape_: function(LogisticInput) {
+      // Add or remove a Value Input.
+      var inputExists = this.getInput('threshold');
+      var groupByInputExists = this.getInput('group_by');
+      if (LogisticInput) {
+        if (!inputExists && !groupByInputExists) {
+          this.appendValueInput('threshold')
+              .setCheck('Number')
+              .setAlign(Blockly.ALIGN_RIGHT)
+              .appendField("Threshold");
+          this.appendValueInput('group_by')
+              .setCheck('Number')
+              .setAlign(Blockly.ALIGN_RIGHT)
+              .appendField("Group by");        
+        }
+      } else if (inputExists) {
+            this.removeInput('threshold');
+            this.removeInput('group_by');
+      }
+    }
+  };
+
+  Blockly.Extensions.registerMutator('Check_Logistic',
+    Blockly.Constants.Check_Logistic,
+    Blockly.Constants.Check_Logistic_Extension);
