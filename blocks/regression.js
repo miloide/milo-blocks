@@ -52,18 +52,18 @@ Blockly.Blocks['regression'] = {
 Blockly.Blocks['regression_train'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Train Linear Regression with");
+        .appendField("Train Regression with");
     this.appendValueInput("regression_variable")
         .setCheck("regression")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Linear regression");
+        .appendField("Regression");
     this.appendValueInput("train")
         .setCheck("Array")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Train on ");
     this.setOutput(true, null);
     this.setColour(230);
- this.setTooltip(" \"Fits a linear regresion model on the data\"");
+ this.setTooltip(" \"Fits a regresion model on the data\"");
  this.setHelpUrl("");
   }
 };
@@ -71,18 +71,18 @@ Blockly.Blocks['regression_train'] = {
 Blockly.Blocks['regression_test'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Test Linear Regression with");
+        .appendField("Test Regression with");
     this.appendValueInput("regression_variable")
         .setCheck("regression")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Linear regression");
+        .appendField("Regression");
     this.appendValueInput("test")
         .setCheck("Array")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Predict on ");
     this.setOutput(true, null);
     this.setColour(230);
- this.setTooltip(" \"Tests a linear regresion model on the data\"");
+ this.setTooltip(" \"Tests a regresion model on the data\"");
  this.setHelpUrl("");
   }
 };
