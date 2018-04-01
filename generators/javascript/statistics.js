@@ -72,11 +72,8 @@ Blockly.JavaScript['stats_construct_cdf'] = function(block) {
 
 Blockly.JavaScript['stats_cdf_get'] = function(block) {
   var value_cdf = Blockly.JavaScript.valueToCode(block, 'CDF', Blockly.JavaScript.ORDER_ATOMIC);
-  console.log(value_cdf);
   var dropdown_name = block.getFieldValue('OPCODE');
-  console.log(dropdown_name);
   var value = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ATOMIC);
-  console.log(value);
   var code = value_cdf + '.' + dropdown_name + '(' + value + ')' ;
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };

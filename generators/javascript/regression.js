@@ -52,7 +52,7 @@ Blockly.JavaScript['regression_train'] = function(block) {
   var checkbox = block.getFieldValue('visualize') == 'TRUE';
   var code = "\n"+ value_regression_variable +'.fit(' + value_train_x +','+ value_train_y + ')';
   if(checkbox){
-     code = "\n"+ value_regression_variable +'.fit(' + value_train_x +','+ value_train_y + ')' +'.visualize()' +'\n';  
+     code = "\n"+ value_regression_variable +'.fit(' + value_train_x +','+ value_train_y + ')' +'.visualize()' +'\n';
   }
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
