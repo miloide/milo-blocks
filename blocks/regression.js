@@ -103,9 +103,11 @@ Blockly.defineBlocksWithJsonArray([
           {
             "type": "field_checkbox",
             "name": "visualize",
+            "align": "RIGHT",
             "checked": false
-          },
+          }
         ],
+        "inputsInline": false,
         "output": "model",
         "colour": 15,
         "tooltip": "",

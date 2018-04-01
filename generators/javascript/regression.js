@@ -49,7 +49,11 @@ Blockly.JavaScript['regression_train'] = function(block) {
   var value_regression_variable = Blockly.JavaScript.valueToCode(block, 'regression_variable', Blockly.JavaScript.ORDER_ATOMIC);
   var value_train_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
   var value_train_y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
+  var checkbox = block.getFieldValue('visualize') == 'TRUE';
   var code = "\n"+ value_regression_variable +'.fit(' + value_train_x +','+ value_train_y + ')';
+  if(checkbox){
+     code = "\n"+ value_regression_variable +'.fit(' + value_train_x +','+ value_train_y + ')' +'.visualize()' +'\n';  
+  }
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
@@ -58,4 +62,10 @@ Blockly.JavaScript['regression_test'] = function(block) {
   var value_test = Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC);
   var code = "\n"+ value_regression_variable +'.transform(' + value_test +')';
   return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['visualize_regressions'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = value_name +'.visualize();\n';
+  return code;
 };
