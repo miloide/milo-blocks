@@ -31,13 +31,15 @@ Blockly.JavaScript['regression'] = function(block) {
   var value_iterations = Blockly.JavaScript.valueToCode(block, 'iterations', Blockly.JavaScript.ORDER_ATOMIC);
   var value_rate = Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC);
   var value_lambda = Blockly.JavaScript.valueToCode(block, 'lambda', Blockly.JavaScript.ORDER_ATOMIC);
-  var logistic_code;
+  value_iterations = parseFloat(value_iterations)?value_iterations:10;
+  value_rate = parseFloat(value_rate)?value_rate:0.1;
+  value_lambda = parseFloat(value_lambda)?value_lambda:0;
   if(dropdown_regression_type == "LogisticRegression"){
     var threshold = Blockly.JavaScript.valueToCode(block, 'threshold', Blockly.JavaScript.ORDER_ATOMIC);
-    var groupBy = Blockly.JavaScript.valueToCode(block, 'group_by', Blockly.JavaScript.ORDER_ATOMIC);
-    var Logisticcode = 'new ' + dropdown_regression_type +'({ \n \t ' +'alpha:' + value_rate +',\n\t' + 'iterations: '+ value_iterations +
+    threshold = parseFloat(threshold)?threshold:0;
+    var logistic_code = 'new ' + dropdown_regression_type +'({ \n \t ' +'alpha:' + value_rate +',\n\t' + 'iterations: '+ value_iterations +
               ',\n\t'+'lambda: '+value_lambda + ',\n\t threshold: '+ threshold + '\n})' ;
-    return [Logisticcode, Blockly.JavaScript.ORDER_NONE];
+    return [logistic_code, Blockly.JavaScript.ORDER_NONE];
   }
   var code = 'new ' + dropdown_regression_type +'({ \n \t ' +'alpha:' + value_rate +',\n\t' + 'iterations: '+ value_iterations +',\n\t'+'lambda: '+value_lambda +'\n})' ;
   return [code, Blockly.JavaScript.ORDER_NONE];
