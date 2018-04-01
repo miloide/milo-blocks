@@ -33,8 +33,11 @@ Blockly.JavaScript['regression'] = function(block) {
   var value_lambda = Blockly.JavaScript.valueToCode(block, 'lambda', Blockly.JavaScript.ORDER_ATOMIC);
   var logistic_code;
   if(dropdown_regression_type == "LogisticRegression"){
-    var threshold = Blockly.JavaScript.valueToCode(block, 'threshold', Blockly.JavaScript.ORDER_ATOMIC);
+    var threshold = Blockly.JavaScript.valueToCode(block, 'threshold', Blockly.JavaScript.ORDER_ATOMIC); 
     var groupBy = Blockly.JavaScript.valueToCode(block, 'group_by', Blockly.JavaScript.ORDER_ATOMIC);
+    var Logisticcode = 'new ' + dropdown_regression_type +'({ \n \t ' +'alpha:' + value_rate +',\n\t' + 'iterations: '+ value_iterations +
+              ',\n\t'+'lambda: '+value_lambda + ',\n\t threshold: '+ threshold + '\n})' ;
+    return [Logisticcode, Blockly.JavaScript.ORDER_NONE];
   }
   var code = 'new ' + dropdown_regression_type +'({ \n \t ' +'alpha:' + value_rate +',\n\t' + 'iterations: '+ value_iterations +',\n\t'+'lambda: '+value_lambda +'\n})' ;
   return [code, Blockly.JavaScript.ORDER_NONE];
@@ -42,8 +45,9 @@ Blockly.JavaScript['regression'] = function(block) {
 
 Blockly.JavaScript['regression_train'] = function(block) {
   var value_regression_variable = Blockly.JavaScript.valueToCode(block, 'regression_variable', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_train = Blockly.JavaScript.valueToCode(block, 'train', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = "\n"+ value_regression_variable +'.fit(' + value_train +')';
+  var value_train_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_train_y = Blockly.JavaScript.valueToCode(block, 'Y', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = "\n"+ value_regression_variable +'.fit(Datasets.zip(' + value_train_x +','+ value_train_y + '))';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 

@@ -79,7 +79,7 @@ Blockly.defineBlocksWithJsonArray([
       },
       {
         "type": "regression_train",
-        "message0": "Train regressor classifier with  %1 Regression  %2 Train on %3",
+        "message0": "Train regressor classifier with  %1 Regression  %2 X %3 Y %4",
         "args0": [
           {
             "type": "input_dummy"
@@ -92,7 +92,12 @@ Blockly.defineBlocksWithJsonArray([
           },
           {
             "type": "input_value",
-            "name": "train",
+            "name": "X",
+            "align": "RIGHT"
+          },
+          {
+            "type": "input_value",
+            "name": "Y",
             "align": "RIGHT"
           }
         ],
@@ -166,21 +171,15 @@ Blockly.Constants.Check_Logistic = {
     updateShape_: function(LogisticInput) {
       // Add or remove a Value Input.
       var inputExists = this.getInput('threshold');
-      var groupByInputExists = this.getInput('group_by');
       if (LogisticInput) {
-        if (!inputExists && !groupByInputExists) {
+        if (!inputExists) {
           this.appendValueInput('threshold')
               .setCheck('Number')
               .setAlign(Blockly.ALIGN_RIGHT)
-              .appendField("Threshold");
-          this.appendValueInput('group_by')
-              .setCheck('Number')
-              .setAlign(Blockly.ALIGN_RIGHT)
-              .appendField("Group by");        
+              .appendField("Threshold");       
         }
       } else if (inputExists) {
             this.removeInput('threshold');
-            this.removeInput('group_by');
       }
     }
   };
