@@ -79,7 +79,7 @@ Blockly.defineBlocksWithJsonArray([
       },
       {
         "type": "regression_train",
-        "message0": "Train regressor classifier with  %1 Regression  %2 X %3 Y %4",
+        "message0": "Train regressor classifier with  %1 Regression  %2 X %3 Y %4 Visualize %5",
         "args0": [
           {
             "type": "input_dummy"
@@ -99,12 +99,33 @@ Blockly.defineBlocksWithJsonArray([
             "type": "input_value",
             "name": "Y",
             "align": "RIGHT"
-          }
+          },
+          {
+            "type": "field_checkbox",
+            "name": "visualize",
+            "checked": false
+          },
         ],
         "output": "model",
         "colour": 15,
         "tooltip": "",
         "helpUrl": "",
+      },
+      {
+        "type": "visualize_regressions",
+        "message0": "Visualize %1",
+        "args0": [
+          {
+            "type": "input_value",
+            "name": "NAME",
+            "check": "model"
+          }
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 15,
+        "tooltip": "",
+        "helpUrl": ""
       }
 ]);
 Blockly.Blocks['regression_test'] = {
@@ -120,7 +141,7 @@ Blockly.Blocks['regression_test'] = {
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Predict on ");
     this.setOutput(true, null);
-    this.setColour(230);
+    this.setColour(15);
  this.setTooltip(" \"Tests a regresion model on the data\"");
  this.setHelpUrl("");
   }
