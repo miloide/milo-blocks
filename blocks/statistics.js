@@ -116,7 +116,7 @@ Blockly.Blocks['stats_construct_cdf'] = {
     this.setTooltip("");
     this.setHelpUrl("");
   }
-}
+};
 
 Blockly.Blocks['stats_cdf_get'] = {
   init: function() {
@@ -154,4 +154,3 @@ Blockly.Blocks['stats_cdf_insert'] = {
     this.setHelpUrl("");
   }
 };
-

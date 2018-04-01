@@ -126,7 +126,7 @@ Blockly.Blocks['regression_test'] = {
   }
 };
 
-Blockly.Constants.Math.Check_Logistic_Extension = function() {
+Blockly.Constants.Check_Logistic_Extension = function() {
     this.getField('regression_type').setValidator(function(option) {
       var LogisticInput = (option == 'LogisticRegression');
       this.sourceBlock_.updateShape_(LogisticInput);
