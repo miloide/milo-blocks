@@ -112,21 +112,21 @@ Blockly.Blocks['dl_mlparams'] = {
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     // Block for numeric value.
   {
-    "type": "dl_number",
+    "type": "tf_number",
     "message0": "%1",
     "args0": [{
       "type": "field_number",
       "name": "NUM",
       "value": 0
     }],
-    "output": "DLnumber",
+    "output": "tfnumber",
     "colour": "%{BKY_ML_HUE}",
     "helpUrl": "https://deeplearnjs.org/docs/api/classes/scalar.html",
     "tooltip": "A Deeplearn.js scalar",
     "extensions": ["parent_tooltip_when_inline"]
   },
   {
-    "type": "dl_array1d",
+    "type": "tf_array1d",
     "message0": "Vector from %1",
     "args0": [{
       "type": "input_value",
@@ -134,7 +134,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "check": "Array"
     }],
     "inputsInline": true,
-    "output": "DLnumber",
+    "output": "tfnumber",
     "colour": "%{BKY_ML_HUE}",
     "helpUrl": "https://deeplearnjs.org/docs/api/classes/array1d.html",
     "tooltip": "A Deeplearn.js Array1D",
@@ -149,14 +149,14 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "check": "Array"
     }],
     "inputsInline": true,
-    "output": "DLnumber",
+    "output": "tfnumber",
     "colour": "%{BKY_ML_HUE}",
     "helpUrl": "https://deeplearnjs.org/docs/api/classes/array1d.html",
     "tooltip": "A Deeplearn.js Array1D",
     "extensions": ["parent_tooltip_when_inline"]
   },
   {
-    "type": "dl_get_scalar",
+    "type": "tf_get_scalar",
     "message0": "Text from Vector %1",
     "args0": [{
       "type": "input_value",
@@ -172,13 +172,13 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 
     // Block for basic arithmetic operator.
   {
-    "type": "dl_arithmetic",
+    "type": "tf_arithmetic",
     "message0": "A %1 %2 %3 B %4",
     "args0": [
       {
         "type": "input_value",
         "name": "A",
-        "check": "DLnumber",
+        "check": "tfnumber",
         "align": "RIGHT"
       },
       {
@@ -209,15 +209,34 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       {
         "type": "input_value",
         "name": "B",
-        "check": "DLnumber",
+        "check": "tfnumber",
         "align": "RIGHT"
       }
     ],
     "inputsInline": false,
-    "output": "DLnumber",
+    "output": "tfnumber",
     "colour": "%{BKY_ML_HUE}",
     "helpUrl": "https://deeplearnjs.org/docs/api/classes/ndarraymath.html",
     "extensions": ["math_op_tooltip"]
+  },
+  {
+    "type": "print",
+    "message0": "Print Tensor  %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "tensor",
+        "check": [
+          "tfnumber",
+          "tensor"
+        ]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
   }
 
 ]);

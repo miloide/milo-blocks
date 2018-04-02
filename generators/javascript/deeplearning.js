@@ -46,46 +46,49 @@ Blockly.JavaScript['dl_predict'] = function(block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['dl_number'] = function(block) {
+Blockly.JavaScript['tf_number'] = function(block) {
     var arg0 = parseFloat(block.getFieldValue("NUM"));
-    var code = "dl.Scalar.new(" + arg0 +")";
+    var code = "tf.scalar(" + arg0 +")";
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['dl_array1d'] = function(block) {
+Blockly.JavaScript['tf_array1d'] = function(block) {
     var arg0 = Blockly.JavaScript.valueToCode(block, "NUM", Blockly.JavaScript.ORDER_FUNCTION_CALL);
-    var code = "dl.Array1D.new(" + arg0 +")";
+    var code = "tf.tensor1d(" + arg0 +")";
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['dl_get_scalar'] = function(block) {
-    var zero = "dl.Scalar.new(0)";
+Blockly.JavaScript['tf_get_scalar'] = function(block) {
+    var zero = "tf.scalar(0)";
     arg0 = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC) || zero;
     var code = arg0+".dataSync()";
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['dl_arithmetic'] = function(block) {
+Blockly.JavaScript['tf_arithmetic'] = function(block) {
     // Basic arithmetic operators, and power.
     var OPERATORS = {
-      'ADD': ['math.add', Blockly.JavaScript.ORDER_ADDITION],
-      'MINUS': ['math.subtract', Blockly.JavaScript.ORDER_SUBTRACTION],
-      'MULTIPLY': ['math.multiply', Blockly.JavaScript.ORDER_MULTIPLICATION],
-      'DIVIDE': ['math.divide', Blockly.JavaScript.ORDER_DIVISION],
+      'ADD': ['add', Blockly.JavaScript.ORDER_ADDITION],
+      'MINUS': ['sub', Blockly.JavaScript.ORDER_SUBTRACTION],
+      'MULTIPLY': ['mul', Blockly.JavaScript.ORDER_MULTIPLICATION],
+      'DIVIDE': ['div', Blockly.JavaScript.ORDER_DIVISION],
     };
     var tuple = OPERATORS[block.getFieldValue('OP')];
     var operator = tuple[0];
     var order = tuple[1];
-    var argument0 = Blockly.JavaScript.valueToCode(block, 'A', order) || '0';
-    var argument1 = Blockly.JavaScript.valueToCode(block, 'B', order) || '0';
+    var argument0 = Blockly.JavaScript.valueToCode(block, 'A', order) || 0;
+    var argument1 = Blockly.JavaScript.valueToCode(block, 'B', order) || 0;
     var code;
-    code = operator+'(' + argument0 + ', ' + argument1 + ')';
+    code = argument0+'.' + operator +'('+ argument1 + ')';
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
-
-
-
+Blockly.JavaScript['print'] = function(block) {
+    var value_tensor = Blockly.JavaScript.valueToCode(block, 'tensor', Blockly.JavaScript.ORDER_ATOMIC);
+    var code = value_tensor +'.print()';
+    return code;
+  };
+  
 Blockly.JavaScript['dl_dataconfiguration'] = function(block) {
     var value_noattributes = Blockly.JavaScript.valueToCode(block, 'noAttributes', Blockly.JavaScript.ORDER_ATOMIC);
     var value_labelshape = Blockly.JavaScript.valueToCode(block, 'labelShape', Blockly.JavaScript.ORDER_ATOMIC);
@@ -116,6 +119,7 @@ Blockly.JavaScript['dl_train'] = function(block) {
   var code = 'var cost = session.train(costTensor, FeedEntry, batchSize, optimizer, costFunction);\n';
   return code;
 };
+
 
 
 
