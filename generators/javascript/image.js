@@ -37,11 +37,11 @@ Blockly.JavaScript.img_from_webcam = function(block) {
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
-Blockly.JavaScript.squeezenet_label = function(block) {
+Blockly.JavaScript.mobilenet_label = function(block) {
     const zero = "";
     var arg0 = Blockly.JavaScript.valueToCode(block, 'IMG', Blockly.JavaScript.ORDER_NONE) || zero;
     if (arg0 == zero) return ["",Blockly.JavaScript.ORDER_ATOMIC];
-    var code = 'SqueezeNet.classify(\n\t'+ arg0 +'\n);\n';
+    var code = 'MobileNet.classify(\n\t'+ arg0 +'\n);\n';
     return code;
 };
 
