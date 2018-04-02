@@ -25,90 +25,6 @@
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
-Blockly.Blocks['dl_train'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Train");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-Blockly.Blocks['dl_feedentry'] = {
-  init: function() {
-    this.appendDummyInput()
-          .appendField("");
-    this.appendValueInput("inuptX")
-          .setCheck(null)
-          .appendField("Set inputX to");
-    this.appendValueInput("inputY")
-          .setCheck(null)
-          .appendField("Set inputY to");
-    this.appendDummyInput()
-          .appendField("costFunction")
-          .appendField(new Blockly.FieldDropdown([["Mean","MEAN"], ["Sum","SUM"], ["None","NONE"]]), "costFunction");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-Blockly.Blocks['dl_optimizer'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Set Optimizer to")
-        .appendField(new Blockly.FieldDropdown([["SGD","SGDOptimizer"], ["Adagrad","Adagrad"], ["Adamax","Adamax"], ["Adam","Adam"]]), "optimizer");
-    this.setInputsInline(true);
-    this.setNextStatement(true, null);
-    Blockly.BlockSvg.START_HAT = true;
-    this.setPreviousStatement(true, null);
-    this.setColour(Blockly.Msg.ML_HUE);
-    this.setTooltip("Choose an optimizer");
-    this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['dl_createoptimizer'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Set Optimizer to ")
-        .appendField(new Blockly.FieldDropdown([["Adagrad","Adagrad"], ["SGD","SGDOptimizer"], ["Adam","Adam"]]), "optimizer");
-    this.appendDummyInput()
-        .appendField("with learning rate")
-        .appendField(new Blockly.FieldNumber(0), "rate");
-    this.appendDummyInput()
-        .appendField("number of batches ")
-        .appendField(new Blockly.FieldNumber(0), "numBatches");
-    this.appendDummyInput()
-        .appendField("batch size")
-        .appendField(new Blockly.FieldNumber(0), "batchSize");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(Blockly.Msg.ML_HUE);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-
-Blockly.Blocks['dl_mlparams'] = {
-  init: function() {
-    this.appendValueInput("VALUE")
-            .setCheck("Number")
-            .appendField("Set parameter")
-            .appendField(new Blockly.FieldDropdown([["Learning Rate","learningRate"], ["Batch size","batchSize"], ["Number of batches","numBatches"]]), "paramters")
-            .appendField("to");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(Blockly.Msg.ML_HUE);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-
-
 Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     // Block for numeric value.
   {
@@ -127,7 +43,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   },
   {
     "type": "tf_array1d",
-    "message0": "Vector from %1",
+    "message0": "Matrix from %1",
     "args0": [{
       "type": "input_value",
       "name": "NUM",
@@ -200,6 +116,18 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
           [
             "÷",
             "DIVIDE"
+          ],
+          [
+            "max",
+            "MAX"
+          ],
+          [
+            "min",
+            "MIN"
+          ],
+          [
+            "pow",
+            "POW"
           ]
         ]
       },
@@ -221,7 +149,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   },
   {
     "type": "print",
-    "message0": "Print Tensor  %1",
+    "message0": "Print value of  %1",
     "args0": [
       {
         "type": "input_value",
@@ -241,20 +169,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
 
 ]);
 
-Blockly.Blocks['dl_dataconfiguration'] = {
-  init: function() {
-    this.appendValueInput("noAttributes")
-        .setCheck("Number")
-        .appendField("Number of Attributes");
-    this.appendValueInput("labelShape")
-        .setCheck("Number")
-        .appendField("Label Shape ");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }};
+
 
 Blockly.Blocks['dl_constant'] = {
   init: function() {

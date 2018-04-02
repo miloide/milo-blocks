@@ -54,7 +54,7 @@ Blockly.JavaScript['tf_number'] = function(block) {
 
 Blockly.JavaScript['tf_array1d'] = function(block) {
     var arg0 = Blockly.JavaScript.valueToCode(block, "NUM", Blockly.JavaScript.ORDER_FUNCTION_CALL);
-    var code = "tf.tensor1d(" + arg0 +")";
+    var code = "tf.tensor(" + arg0 +")";
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
@@ -72,6 +72,9 @@ Blockly.JavaScript['tf_arithmetic'] = function(block) {
       'MINUS': ['sub', Blockly.JavaScript.ORDER_SUBTRACTION],
       'MULTIPLY': ['mul', Blockly.JavaScript.ORDER_MULTIPLICATION],
       'DIVIDE': ['div', Blockly.JavaScript.ORDER_DIVISION],
+      'MIN':['minimum', Blockly.JavaScript.ORDER_ATOMIC],
+      'MAX':['maximum', Blockly.JavaScript.ORDER_ATOMIC],
+      'POW':['pow', Blockly.JavaScript.ORDER_ATOMIC]
     };
     var tuple = OPERATORS[block.getFieldValue('OP')];
     var operator = tuple[0];
@@ -85,41 +88,6 @@ Blockly.JavaScript['tf_arithmetic'] = function(block) {
 
 Blockly.JavaScript['print'] = function(block) {
     var value_tensor = Blockly.JavaScript.valueToCode(block, 'tensor', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = value_tensor +'.print()';
+    var code = 'console.webLog(' + value_tensor +'.toString().split("values:")[1].trim());\n';
     return code;
   };
-  
-Blockly.JavaScript['dl_dataconfiguration'] = function(block) {
-    var value_noattributes = Blockly.JavaScript.valueToCode(block, 'noAttributes', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_labelshape = Blockly.JavaScript.valueToCode(block, 'labelShape', Blockly.JavaScript.ORDER_ATOMIC);
-    var inputTensor = '\n var inputTensor = graph.placeholder(\'input\',[' +  value_noattributes  + ']);';
-    var multiplier = '\n var multiplier = graph.variable(\'multiplier\', dl.Array2D.randNormal([1,' +value_noattributes+']));';
-    var labelTensor = '\n var labelTensor =  graph.placeholder(\'label\','+ value_labelshape+');';
-    var outputTensor = '\n var outputTensor = graph.matmul(multiplier, inputTensor);';
-    var costTensor = '\n var costTensor = graph.meanSquaredCost(outputTensor, labelTensor);';
-    var code = inputTensor+multiplier+labelTensor+outputTensor+costTensor;
-    return code;
-};
-
-Blockly.JavaScript['dl_feedentry'] = function(block) {
-    var value_inuptx = Blockly.JavaScript.valueToCode(block, 'inuptX', Blockly.JavaScript.ORDER_ATOMIC);
-    var value_inputy = Blockly.JavaScript.valueToCode(block, 'inputY', Blockly.JavaScript.ORDER_ATOMIC);
-    var dropdown_costfunction = block.getFieldValue('costFunction');
-    // TODO: Assemble JavaScript into code variable.
-    var costFunction = '\nvar costFunction = dl.CostReduction.' + dropdown_costfunction +';';
-    var shuffledInputProviderBuilder =  '\nvar shuffledInputProviderBuilder = new dl.InCPUMemoryShuffledInputProviderBuilder([' + value_inuptx + ','+  value_inputy +']);';
-    var _a = '\nvar _a = shuffledInputProviderBuilder.getInputProviders(), inputProvider = _a[0], labelProvider = _a[1];';
-    var FeedEntry = '\nvar FeedEntry = [{tensor: inputTensor, data: inputProvider},{tensor: labelTensor, data: labelProvider}];\n';
-    var code = costFunction + shuffledInputProviderBuilder + _a + FeedEntry;
-    return code;
-};
-
-Blockly.JavaScript['dl_train'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = 'var cost = session.train(costTensor, FeedEntry, batchSize, optimizer, costFunction);\n';
-  return code;
-};
-
-
-
-
