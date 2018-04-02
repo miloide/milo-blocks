@@ -88,6 +88,12 @@ Blockly.JavaScript['tf_arithmetic'] = function(block) {
 
 Blockly.JavaScript['print'] = function(block) {
     var value_tensor = Blockly.JavaScript.valueToCode(block, 'tensor', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = 'console.webLog(' + value_tensor +'.toString().split("values:")[1].trim());\n';
+    var code = 'console.webLog(' + value_tensor +'.toString().split("values:")[1].trim() \n';
     return code;
   };
+  Blockly.JavaScript['tf_basic_math'] = function(block) {
+  var dropdown_math = block.getFieldValue('math');
+  var value_tensor = Blockly.JavaScript.valueToCode(block, 'tensor', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = value_tensor+'.'+dropdown_math + '() \n';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
