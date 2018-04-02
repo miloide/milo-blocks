@@ -35,14 +35,14 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "name": "NUM",
       "value": 0
     }],
-    "output": "tfnumber",
+    "output": "tensor",
     "colour": "%{BKY_ML_HUE}",
     "helpUrl": "https://deeplearnjs.org/docs/api/classes/scalar.html",
     "tooltip": "A Deeplearn.js scalar",
     "extensions": ["parent_tooltip_when_inline"]
   },
   {
-    "type": "tf_array1d",
+    "type": "tf_tensor",
     "message0": "Matrix from %1",
     "args0": [{
       "type": "input_value",
@@ -50,22 +50,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "check": "Array"
     }],
     "inputsInline": true,
-    "output": "tfnumber",
-    "colour": "%{BKY_ML_HUE}",
-    "helpUrl": "https://deeplearnjs.org/docs/api/classes/array1d.html",
-    "tooltip": "A Deeplearn.js Array1D",
-    "extensions": ["parent_tooltip_when_inline"]
-  },
-  {
-    "type": "dl_predict",
-    "message0": "Predict label for %1",
-    "args0": [{
-      "type": "input_value",
-      "name": "NUM",
-      "check": "Array"
-    }],
-    "inputsInline": true,
-    "output": "tfnumber",
+    "output": "tensor",
     "colour": "%{BKY_ML_HUE}",
     "helpUrl": "https://deeplearnjs.org/docs/api/classes/array1d.html",
     "tooltip": "A Deeplearn.js Array1D",
@@ -77,7 +62,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "args0": [{
       "type": "input_value",
       "name": "NUM",
-      "check": "DLnumber"
+      "check": "tensor"
     }],
     "output": "Number",
     "colour": "%{BKY_HISTOGRAM_HUE}",
@@ -94,7 +79,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       {
         "type": "input_value",
         "name": "A",
-        "check": "tfnumber",
+        "check": "tensor",
         "align": "RIGHT"
       },
       {
@@ -137,18 +122,18 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       {
         "type": "input_value",
         "name": "B",
-        "check": "tfnumber",
+        "check": "tensor",
         "align": "RIGHT"
       }
     ],
     "inputsInline": false,
-    "output": "tfnumber",
+    "output": "tensor",
     "colour": "%{BKY_ML_HUE}",
-    "helpUrl": "https://deeplearnjs.org/docs/api/classes/ndarraymath.html",
-    "extensions": ["math_op_tooltip"]
+    "tooltip": "",
+    "helpUrl": "https://deeplearnjs.org/docs/api/classes/ndarraymath.html"
   },
   {
-    "type": "print",
+    "type": "tf_print",
     "message0": "Print value of  %1",
     "args0": [
       {
@@ -168,19 +153,3 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   }
 
 ]);
-
-
-
-Blockly.Blocks['dl_constant'] = {
-  init: function() {
-    this.appendDummyInput()
-            .appendField("")
-            .appendField(new Blockly.FieldNumber(0), "NUM");
-    this.setColour(Blockly.Msg.ML_HUE);
-    this.setOutput(true, null);
-    this.setTooltip("");
-    this.setHelpUrl("");
-  }
-};
-
-
