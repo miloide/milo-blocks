@@ -74,8 +74,8 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "inputsInline": false,
-  "previousStatement": "Scatter",
-  "nextStatement": "Scatter",
+  "previousStatement": "PlotData",
+  "nextStatement": "PlotData",
   "colour": "%{BKY_SCATTER_HUE}",
   "tooltip": "Set plot options",
   "helpUrl": ""
@@ -123,8 +123,8 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "inputsInline": false,
-  "previousStatement": null,
-  "nextStatement": null,
+  "previousStatement": "PlotData",
+  "nextStatement": "PlotData",
   "colour": "%{BKY_SCATTER_HUE}",
   "tooltip": "Set plot options",
   "helpUrl": ""
@@ -156,9 +156,62 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "inputsInline": false,
-  "previousStatement": "Histogram",
-  "nextStatement": "Histogram",
-  "colour": "%{BKY_HISTOGRAM_HUE}",
+  "previousStatement": "PlotData",
+  "nextStatement": "PlotData",
+  "colour": "%{BKY_SCATTER_HUE}",
+  "tooltip": "Histogram",
+  "helpUrl": ""
+},
+{
+  "type": "plot_box",
+  "lastDummyAlign0": "RIGHT",
+  "message0": "Box Plot %1 Data %2 Label %3 Color %4 %5 Horizontal %6 %7 Show Points %8",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "X",
+      "check": "Array",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "NAME",
+      "check": "String",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_colour",
+      "name": "HUE",
+      "colour": "#ffffff"
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_checkbox",
+      "name": "HORIZONTAL",
+      "align": "RIGHT",
+      "checked": false
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_checkbox",
+      "name": "POINTS",
+      "align": "RIGHT",
+      "checked": true
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": "PlotData",
+  "nextStatement": "PlotData",
+  "colour": "%{BKY_SCATTER_HUE}",
   "tooltip": "Histogram",
   "helpUrl": ""
 },
@@ -217,10 +270,7 @@ Blockly.defineBlocksWithJsonArray([{
     {
       "type": "input_statement",
       "name": "DATA",
-      "check": [
-        "Scatter",
-        "Histogram"
-      ],
+      "check": "PlotData",
       "align": "RIGHT"
     },
     {
@@ -230,6 +280,7 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "previousStatement":null,
+  "nextStatement":null,
   "colour": "%{BKY_PLOT_HUE}",
   "tooltip": "",
   "helpUrl": ""
