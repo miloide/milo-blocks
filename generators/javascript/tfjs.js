@@ -23,28 +23,9 @@
  */
 
 'use strict';
-goog.provide('Blockly.JavaScript.dl');
+goog.provide('Blockly.JavaScript.tf');
 goog.require('Blockly.JavaScript');
 
-
-Blockly.JavaScript.dl_constant = function(a) {
-    return [parseFloat(a.getFieldValue("NUM")),Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-Blockly.JavaScript.dl_createoptimizer = function(block){
-    var optimizer = block.getFieldValue('optimizer');
-    var rate = parseFloat(block.getFieldValue('rate'));
-    var numBatches = parseInt(block.getFieldValue('numBatches'));
-    var batchSize = parseInt(block.getFieldValue('batchSize'));
-    var code =  '\n const rate = '+ rate +';' +'\n const optimizer = '+ 'new dl.'+optimizer+'(rate)' + ';'  + '\n' + '\n const numBatches = '+ numBatches+';' +'\n'+ '\n const batchSize = ' + batchSize+';' + '\n' ;
-    return code;
-};
-
-Blockly.JavaScript['dl_predict'] = function(block) {
-    var number_testx = Blockly.JavaScript.valueToCode(block, "NUM", Blockly.JavaScript.ORDER_FUNCTION_CALL);
-    var code = 'session.eval(outputTensor,[{tensor: inputTensor, data: dl.Array1D.new('+number_testx+')}])';
-    return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
 
 Blockly.JavaScript['tf_number'] = function(block) {
     var arg0 = parseFloat(block.getFieldValue("NUM"));
@@ -52,7 +33,7 @@ Blockly.JavaScript['tf_number'] = function(block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['tf_array1d'] = function(block) {
+Blockly.JavaScript['tf_tensor'] = function(block) {
     var arg0 = Blockly.JavaScript.valueToCode(block, "NUM", Blockly.JavaScript.ORDER_FUNCTION_CALL);
     var code = "tf.tensor(" + arg0 +")";
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
@@ -86,8 +67,8 @@ Blockly.JavaScript['tf_arithmetic'] = function(block) {
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
-Blockly.JavaScript['print'] = function(block) {
+Blockly.JavaScript['tf_print'] = function(block) {
     var value_tensor = Blockly.JavaScript.valueToCode(block, 'tensor', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = 'console.webLog(' + value_tensor +'.toString().split("values:")[1].trim());\n';
+    var code = 'console.webLog(' + value_tensor +'.toString().split("values:")[1]);\n';
     return code;
   };
