@@ -101,6 +101,11 @@ Blockly.JavaScript['plot_box'] = function(block) {
     return code;
 };
 
+Blockly.JavaScript['plot_canvas'] = function(block) {
+  var code = 'var canvas = new Canvas();';
+  return code;
+};
+
 Blockly.JavaScript['plot_title'] = function(block) {
   var text_name = block.getFieldValue('NAME');
   var code = '{\n\t"type":"plot_title",\n\t"value":"'+text_name+'"\n},\n';
