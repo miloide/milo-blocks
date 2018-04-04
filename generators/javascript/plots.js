@@ -135,7 +135,7 @@ Blockly.JavaScript['plot_show'] = function(block) {
   var setOptions = statements_options.length!=0?plotVar +".setOptions([\n"+statements_options+"\n]);":"";
   var showPlot = plotVar +".show()";
   var code = [newPlot,setData,setOptions,showPlot].join("\n");
-  code += code + ";\n";
+  code += ";\n";
   return code;
 };
 
