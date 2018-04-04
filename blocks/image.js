@@ -65,12 +65,12 @@ Blockly.defineBlocksWithJsonArray([{
   "helpUrl": "",
   "previousStatement": true,
   "nextStatement": true,
-  "tooltip": "Labels image using squeezenet Model",
+  "tooltip": "Labels image using mobilenet Model",
   "extensions": ["parent_tooltip_when_inline"]
 },
 {
-  "type": "squeezenet_label",
-  "message0": "Using SqueezeNet",
+  "type": "mobilenet_label",
+  "message0": "Using MobileNet",
   "message1": "Classify %1",
   "args1": [{
     "type": "input_value",
@@ -81,6 +81,6 @@ Blockly.defineBlocksWithJsonArray([{
   "helpUrl": "",
   "previousStatement": true,
   "nextStatement": true,
-  "tooltip": "Labels image using squeezenet Model",
+  "tooltip": "Labels image using mobilenet Model",
   "extensions": ["parent_tooltip_when_inline"]
 }]);

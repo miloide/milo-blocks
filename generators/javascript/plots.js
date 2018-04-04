@@ -70,7 +70,6 @@ Blockly.JavaScript['plot_histogram'] = function(block) {
     var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
     var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
     var colour_hue = block.getFieldValue('HUE');
-    // TODO: Assemble JavaScript into code variable.
     var code = '{\n'+
         '"type":"histogram",\n'+
         '"name":"'+ value_name +'"'+
@@ -78,6 +77,27 @@ Blockly.JavaScript['plot_histogram'] = function(block) {
         ',\n"marker": {"color":"'+ colour_hue +'"},'+
         '\n},\n'
     ;
+    return code;
+};
+
+Blockly.JavaScript['plot_box'] = function(block) {
+    var value_x = Blockly.JavaScript.valueToCode(block, 'X', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+    var colour_hue = block.getFieldValue('HUE');
+    var check_horizontal = block.getFieldValue('HORIZONTAL') == 'TRUE';
+    var coordinate_key = check_horizontal?'x':'y';
+    var check_points = block.getFieldValue('POINTS') == 'TRUE';
+    var code = '{\n'+
+        '"type":"box",\n'+
+        '"name":"'+ value_name +'"'+
+        ',\n"'+ coordinate_key +'":'+ value_x +
+        ',\n"marker": {"color":"'+ colour_hue +'"}';
+    if (check_points){
+        code = code + ',\n"boxpoints": "all"'+
+        ',\n"jitter": 0.3'+
+        ',\n"pointpos": -1.8';
+    }
+    code = code + '\n},\n';
     return code;
 };
 
