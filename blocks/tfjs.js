@@ -56,20 +56,6 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "A Deeplearn.js Array1D",
     "extensions": ["parent_tooltip_when_inline"]
   },
-  {
-    "type": "tf_get_scalar",
-    "message0": "Text from Vector %1",
-    "args0": [{
-      "type": "input_value",
-      "name": "NUM",
-      "check": "tensor"
-    }],
-    "output": "Number",
-    "colour": "%{BKY_HISTOGRAM_HUE}",
-    "helpUrl": "https://deeplearnjs.org/docs/api/classes/ndarray.html#get",
-    "tooltip": "Get raw value ",
-    "extensions": ["parent_tooltip_when_inline"]
-  },
 
     // Block for basic arithmetic operator.
   {
@@ -160,6 +146,10 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "name": "math",
       "options": [
         [
+          "transpose",
+          "transpose"
+        ],
+        [
           "absolute",
           "abs"
         ],
@@ -212,7 +202,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     {
       "type": "input_value",
       "name": "tensor",
-      "check": "tfnumber"
+      "check": "tensor"
     }
   ],
   "output": null,

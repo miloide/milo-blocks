@@ -39,13 +39,6 @@ Blockly.JavaScript['tf_tensor'] = function(block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['tf_get_scalar'] = function(block) {
-    var zero = "tf.scalar(0)";
-    arg0 = Blockly.JavaScript.valueToCode(block, 'NUM', Blockly.JavaScript.ORDER_ATOMIC) || zero;
-    var code = arg0+".dataSync()";
-    return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
 Blockly.JavaScript['tf_arithmetic'] = function(block) {
     // Basic arithmetic operators, and power.
     var OPERATORS = {
@@ -69,7 +62,7 @@ Blockly.JavaScript['tf_arithmetic'] = function(block) {
 
 Blockly.JavaScript['tf_print'] = function(block) {
     var value_tensor = Blockly.JavaScript.valueToCode(block, 'tensor', Blockly.JavaScript.ORDER_ATOMIC);
-    var code = 'console.webLog(' + value_tensor +'.toString().split("values:")[1].trim() \n';
+    var code = 'console.webLog(' + value_tensor +'.toString().split("values:")[1].trim()) \n';
     return code;
   };
 Blockly.JavaScript['tf_basic_math'] = function(block) {
