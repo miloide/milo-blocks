@@ -264,6 +264,14 @@ Blockly.defineBlocksWithJsonArray([{
   "helpUrl": ""
 },
 {
+  "type": "plot_canvas",
+  "message0": "Draw on Canavs",
+  "setOutput":"image",
+  "colour": "%{BKY_PLOT_HUE}",
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "plot_show",
   "message0": "Plot %1 Options %2",
   "args0": [
