@@ -56,20 +56,6 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "tooltip": "A Deeplearn.js Array1D",
     "extensions": ["parent_tooltip_when_inline"]
   },
-  {
-    "type": "tf_get_scalar",
-    "message0": "Text from Vector %1",
-    "args0": [{
-      "type": "input_value",
-      "name": "NUM",
-      "check": "tensor"
-    }],
-    "output": "Number",
-    "colour": "%{BKY_HISTOGRAM_HUE}",
-    "helpUrl": "https://deeplearnjs.org/docs/api/classes/ndarray.html#get",
-    "tooltip": "Get raw value ",
-    "extensions": ["parent_tooltip_when_inline"]
-  },
 
     // Block for basic arithmetic operator.
   {
@@ -150,6 +136,79 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
-  }
+  },
+  {
+  "type": "tf_basic_math",
+  "message0": "Perform %1 on %2",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "math",
+      "options": [
+        [
+          "transpose",
+          "transpose"
+        ],
+        [
+          "absolute",
+          "abs"
+        ],
+        [
+          "acos",
+          "acos"
+        ],
+        [
+          "asin",
+          "asin"
+        ],
+        [
+          "tan",
+          "atan"
+        ],
+        [
+          "ceil",
+          "ceil"
+        ],
+        [
+          "floor",
+          "floor"
+        ],
+        [
+          "log",
+          "log"
+        ],
+        [
+          "sigmoid",
+          "sigmoid"
+        ],
+        [
+          "square",
+          "square"
+        ],
+        [
+          "sqrt",
+          "sqrt"
+        ],
+        [
+          "tanh",
+          "tanh"
+        ],
+        [
+          "relu",
+          "relu"
+        ]
+      ]
+    },
+    {
+      "type": "input_value",
+      "name": "tensor",
+      "check": "tensor"
+    }
+  ],
+  "output": null,
+  "colour": 230,
+  "tooltip": "",
+  "helpUrl": ""
+}
 
 ]);

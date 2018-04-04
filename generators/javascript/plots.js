@@ -101,6 +101,11 @@ Blockly.JavaScript['plot_box'] = function(block) {
     return code;
 };
 
+Blockly.JavaScript['plot_canvas'] = function(block) {
+  var code = 'var canvas = new Canvas();';
+  return code;
+};
+
 Blockly.JavaScript['plot_title'] = function(block) {
   var text_name = block.getFieldValue('NAME');
   var code = '{\n\t"type":"plot_title",\n\t"value":"'+text_name+'"\n},\n';
@@ -130,6 +135,7 @@ Blockly.JavaScript['plot_show'] = function(block) {
   var setOptions = statements_options.length!=0?plotVar +".setOptions([\n"+statements_options+"\n]);":"";
   var showPlot = plotVar +".show()";
   var code = [newPlot,setData,setOptions,showPlot].join("\n");
+  code += ";\n";
   return code;
 };
 
