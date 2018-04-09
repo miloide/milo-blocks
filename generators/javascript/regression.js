@@ -69,3 +69,26 @@ Blockly.JavaScript['visualize_regressions'] = function(block) {
   var code = value_name +'.visualize();\n';
   return code;
 };
+
+Blockly.JavaScript['visualize_knn'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'new visualize().showCanvas(); ';
+  return code;
+};
+
+Blockly.JavaScript['k_nearest_neighbor'] = function(block) {
+  var value_features = Blockly.JavaScript.valueToCode(block, 'features', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_labels = Blockly.JavaScript.valueToCode(block, 'labels', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_k = Blockly.JavaScript.valueToCode(block, 'k', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'new ';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['k_nearest_neighbor_predict'] = function(block) {
+  var value_test = Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC);
+  var checkbox_visualize = block.getFieldValue('visualize') == 'TRUE';
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};

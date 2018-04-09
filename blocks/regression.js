@@ -209,3 +209,60 @@ Blockly.Extensions.registerMutator('Check_Logistic',
   Blockly.Constants.Check_Logistic,
   Blockly.Constants.Check_Logistic_Extension
 );
+
+Blockly.Blocks['visualize_knn'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Visualize KNN");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['k_nearest_neighbor'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("K Nearest Neigbors");
+    this.appendValueInput("features")
+        .setCheck(["Array", "Number"])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("X(Features)");
+    this.appendValueInput("labels")
+        .setCheck("Array")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Labels");
+    this.appendValueInput("k")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Number of Neighbors to consider");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['k_nearest_neighbor_predict'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("Predict using KNN");
+    this.appendValueInput("test")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Test");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Visualize")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "visualize");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
