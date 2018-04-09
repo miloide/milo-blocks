@@ -138,77 +138,77 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "helpUrl": ""
   },
   {
-  "type": "tf_basic_math",
-  "message0": "Perform %1 on %2",
-  "args0": [
-    {
-      "type": "field_dropdown",
-      "name": "math",
-      "options": [
-        [
-          "transpose",
-          "transpose"
-        ],
-        [
-          "absolute",
-          "abs"
-        ],
-        [
-          "acos",
-          "acos"
-        ],
-        [
-          "asin",
-          "asin"
-        ],
-        [
-          "tan",
-          "atan"
-        ],
-        [
-          "ceil",
-          "ceil"
-        ],
-        [
-          "floor",
-          "floor"
-        ],
-        [
-          "log",
-          "log"
-        ],
-        [
-          "sigmoid",
-          "sigmoid"
-        ],
-        [
-          "square",
-          "square"
-        ],
-        [
-          "sqrt",
-          "sqrt"
-        ],
-        [
-          "tanh",
-          "tanh"
-        ],
-        [
-          "relu",
-          "relu"
+    "type": "tf_basic_math",
+    "message0": "Perform %1 on %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "math",
+        "options": [
+          [
+            "transpose",
+            "transpose"
+          ],
+          [
+            "absolute",
+            "abs"
+          ],
+          [
+            "acos",
+            "acos"
+          ],
+          [
+            "asin",
+            "asin"
+          ],
+          [
+            "tan",
+            "atan"
+          ],
+          [
+            "ceil",
+            "ceil"
+          ],
+          [
+            "floor",
+            "floor"
+          ],
+          [
+            "log",
+            "log"
+          ],
+          [
+            "sigmoid",
+            "sigmoid"
+          ],
+          [
+            "square",
+            "square"
+          ],
+          [
+            "sqrt",
+            "sqrt"
+          ],
+          [
+            "tanh",
+            "tanh"
+          ],
+          [
+            "relu",
+            "relu"
+          ]
         ]
-      ]
-    },
-    {
-      "type": "input_value",
-      "name": "tensor",
-      "check": "tensor"
-    }
-  ],
-  "output": null,
-  "colour": 230,
-  "tooltip": "",
-  "helpUrl": ""
-}
+      },
+      {
+        "type": "input_value",
+        "name": "tensor",
+        "check": "tensor"
+      }
+    ],
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  }
 
 ]);
