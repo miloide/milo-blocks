@@ -74,8 +74,8 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "inputsInline": false,
-  "previousStatement": "Scatter",
-  "nextStatement": "Scatter",
+  "previousStatement": "PlotData",
+  "nextStatement": "PlotData",
   "colour": "%{BKY_SCATTER_HUE}",
   "tooltip": "Set plot options",
   "helpUrl": ""
@@ -123,8 +123,8 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "inputsInline": false,
-  "previousStatement": null,
-  "nextStatement": null,
+  "previousStatement": "PlotData",
+  "nextStatement": "PlotData",
   "colour": "%{BKY_SCATTER_HUE}",
   "tooltip": "Set plot options",
   "helpUrl": ""
@@ -156,9 +156,62 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "inputsInline": false,
-  "previousStatement": "Histogram",
-  "nextStatement": "Histogram",
-  "colour": "%{BKY_HISTOGRAM_HUE}",
+  "previousStatement": "PlotData",
+  "nextStatement": "PlotData",
+  "colour": "%{BKY_SCATTER_HUE}",
+  "tooltip": "Histogram",
+  "helpUrl": ""
+},
+{
+  "type": "plot_box",
+  "lastDummyAlign0": "RIGHT",
+  "message0": "Box Plot %1 Data %2 Label %3 Color %4 %5 Horizontal %6 %7 Show Points %8",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "X",
+      "check": "Array",
+      "align": "RIGHT"
+    },
+    {
+      "type": "input_value",
+      "name": "NAME",
+      "check": "String",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_colour",
+      "name": "HUE",
+      "colour": "#ffffff"
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_checkbox",
+      "name": "HORIZONTAL",
+      "align": "RIGHT",
+      "checked": false
+    },
+    {
+      "type": "input_dummy",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_checkbox",
+      "name": "POINTS",
+      "align": "RIGHT",
+      "checked": true
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": "PlotData",
+  "nextStatement": "PlotData",
+  "colour": "%{BKY_SCATTER_HUE}",
   "tooltip": "Histogram",
   "helpUrl": ""
 },
@@ -211,16 +264,21 @@ Blockly.defineBlocksWithJsonArray([{
   "helpUrl": ""
 },
 {
+  "type": "plot_canvas",
+  "message0": "Draw on Canavs",
+  "setOutput":"image",
+  "colour": "%{BKY_PLOT_HUE}",
+  "tooltip": "",
+  "helpUrl": ""
+},
+{
   "type": "plot_show",
   "message0": "Plot %1 Options %2",
   "args0": [
     {
       "type": "input_statement",
       "name": "DATA",
-      "check": [
-        "Scatter",
-        "Histogram"
-      ],
+      "check": "PlotData",
       "align": "RIGHT"
     },
     {
@@ -230,6 +288,7 @@ Blockly.defineBlocksWithJsonArray([{
     }
   ],
   "previousStatement":null,
+  "nextStatement":null,
   "colour": "%{BKY_PLOT_HUE}",
   "tooltip": "",
   "helpUrl": ""
@@ -289,6 +348,31 @@ Blockly.Blocks['straight_line'] = {
     this.setOutput(true, null);
     this.setColour(230);
     this.setTooltip("Used to plot y=mx+c");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['plot_distributions'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Probability Function");
+    this.appendValueInput("F")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("f(x)");
+    this.appendValueInput("LABEL")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Label");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Color")
+        .appendField(new Blockly.FieldColour("#ffffff"), "COLOR");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(345);
+    this.setTooltip("");
     this.setHelpUrl("");
   }
 };

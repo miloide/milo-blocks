@@ -1,7 +1,7 @@
 {
   "name": "milo-blocks",
   "version": "1.0.0",
-  "description": "Blockly is a library for building visual programming editors.",
+  "description": "milo-blocks is the core blocks library that is used by the Milo Project",
   "keywords": [
     "blockly"
   ],
@@ -12,9 +12,9 @@
   "bugs": {
     "url": "https://github.com/4and4/milo-blocks/issues"
   },
-  "homepage": "https://developers.google.com/blockly/",
+  "homepage": "https://milo.msrit.net",
   "author": {
-    "name": "Neil Fraser"
+    "name": "Ayush Bihani, Arjun Rao and Authors of Blockly"
   },
   "main": "./dist/blockly.js",
   "scripts": {
