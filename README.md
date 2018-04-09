@@ -1,4 +1,4 @@
-# Milo Blocks [![Build Status]( https://travis-ci.org/4and4/milo-blocks.svg?branch=master)](https://travis-ci.org/4and4/milo-blocks)
+# Milo Blocks [![Build Status]( https://travis-ci.org/miloide/milo-blocks.svg?branch=master)](https://travis-ci.org/miloide/milo-blocks)
 
 
 Fork of Google's Blockly project which is a framework for building web-based, visual programming environments.
