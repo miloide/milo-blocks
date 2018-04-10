@@ -214,9 +214,13 @@ Blockly.Blocks['visualize_knn'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Visualize KNN");
+    this.appendValueInput("knn")
+        .appendField("Knn Model")
+        .setCheck("knn");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(15);
+    
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -239,8 +243,13 @@ Blockly.Blocks['k_nearest_neighbor'] = {
         .setCheck("Number")
         .setAlign(Blockly.ALIGN_LEFT)
         .appendField("Number of Neighbors to consider");
-    this.setOutput(true, null);
-    this.setColour(230);
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Distance metric")
+        .appendField(new Blockly.FieldDropdown([["euclidean","euclideanDistance"], ["manhattan","manhattanDistance"]]), "distance");
+    this.setOutput(true, "knn");
+    this.setInputsInline(false);
+    this.setColour(15);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -251,6 +260,10 @@ Blockly.Blocks['k_nearest_neighbor_predict'] = {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
         .appendField("Predict using KNN");
+    this.appendValueInput("knn")
+        .appendField("Knn")
+        .setCheck("knn")
+        .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput("test")
         .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -261,7 +274,7 @@ Blockly.Blocks['k_nearest_neighbor_predict'] = {
         .appendField(new Blockly.FieldCheckbox("TRUE"), "visualize");
     this.setInputsInline(false);
     this.setOutput(true, null);
-    this.setColour(230);
+    this.setColour(15);
  this.setTooltip("");
  this.setHelpUrl("");
   }
