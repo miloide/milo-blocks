@@ -213,14 +213,13 @@ Blockly.Extensions.registerMutator('Check_Logistic',
 Blockly.Blocks['visualize_knn'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Visualize KNN");
+        .appendField("Visualize sample KNN model");
     this.appendValueInput("knn")
-        .appendField("Knn Model")
+        .appendField("Knn model")
         .setCheck("knn");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(15);
-    
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -265,13 +264,9 @@ Blockly.Blocks['k_nearest_neighbor_predict'] = {
         .setCheck("knn")
         .setAlign(Blockly.ALIGN_RIGHT);
     this.appendValueInput("test")
-        .setCheck("Number")
+        .setCheck(["Number","Array"])
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Test");
-    this.appendDummyInput()
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Visualize")
-        .appendField(new Blockly.FieldCheckbox("TRUE"), "visualize");
     this.setInputsInline(false);
     this.setOutput(true, null);
     this.setColour(15);
