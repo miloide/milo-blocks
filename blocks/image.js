@@ -22,6 +22,8 @@
  * @author Arjun Rao, Ayush Bihani
  */
 
+'use strict';
+
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
