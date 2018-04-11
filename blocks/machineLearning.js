@@ -215,9 +215,9 @@ Blockly.Extensions.registerMutator('Check_Logistic',
 Blockly.Blocks['visualize_knn'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Visualize sample KNN model");
+        .appendField("Visualize");
     this.appendValueInput("knn")
-        .appendField("Knn model")
+        .appendField("KNN model")
         .setCheck("knn");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
