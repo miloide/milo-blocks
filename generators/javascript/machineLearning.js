@@ -69,3 +69,25 @@ Blockly.JavaScript['visualize_regressions'] = function(block) {
   var code = value_name +'.visualize();\n';
   return code;
 };
+
+Blockly.JavaScript['visualize_knn'] = function(block) {
+  var value_knn = Blockly.JavaScript.valueToCode(block, 'knn', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'new Visualize('+ value_knn+').showCanvas(); ';
+  return code;
+};
+
+Blockly.JavaScript['k_nearest_neighbor'] = function(block) {
+  var value_features = Blockly.JavaScript.valueToCode(block, 'features', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_labels = Blockly.JavaScript.valueToCode(block, 'labels', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_k = Blockly.JavaScript.valueToCode(block, 'k', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_distance = block.getFieldValue('distance');
+  var code = 'new Knn(' + value_k + ','+ value_features +','+ value_labels+ ','+ dropdown_distance +')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['k_nearest_neighbor_predict'] = function(block) {
+  var value_test = Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_knn = Blockly.JavaScript.valueToCode(block, 'knn', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = value_knn + '.' + 'getPrediction(' + value_test +')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};

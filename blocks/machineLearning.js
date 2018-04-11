@@ -22,6 +22,8 @@
  * @author Ayush Bihani, Arjun Rao
  */
 
+'use strict';
+
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
@@ -209,3 +211,68 @@ Blockly.Extensions.registerMutator('Check_Logistic',
   Blockly.Constants.Check_Logistic,
   Blockly.Constants.Check_Logistic_Extension
 );
+
+Blockly.Blocks['visualize_knn'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Visualize sample KNN model");
+    this.appendValueInput("knn")
+        .appendField("Knn model")
+        .setCheck("knn");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['k_nearest_neighbor'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("K Nearest Neigbors");
+    this.appendValueInput("features")
+        .setCheck(["Array", "Number"])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("X(Features)");
+    this.appendValueInput("labels")
+        .setCheck("Array")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Labels");
+    this.appendValueInput("k")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Number of Neighbors to consider");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Distance metric")
+        .appendField(new Blockly.FieldDropdown([["euclidean","euclideanDistance"], ["manhattan","manhattanDistance"]]), "distance");
+    this.setOutput(true, "knn");
+    this.setInputsInline(false);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['k_nearest_neighbor_predict'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("Predict using KNN");
+    this.appendValueInput("knn")
+        .appendField("Knn")
+        .setCheck("knn")
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.appendValueInput("test")
+        .setCheck(["Number","Array"])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Test");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
