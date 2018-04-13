@@ -114,16 +114,19 @@ Blockly.JavaScript['kmeans_get_cluster'] = function(block) {
 Blockly.JavaScript['kmeans_predict'] = function(block) {
   var value_kmeans = Blockly.JavaScript.valueToCode(block, 'kmeans', Blockly.JavaScript.ORDER_ATOMIC);
   var value_test = Blockly.JavaScript.valueToCode(block, 'test', Blockly.JavaScript.ORDER_ATOMIC);
+  if(value_kmeans.trim() == '' || value_test.trim() == '') return '';
   var code = value_kmeans+'.predict(' +value_test +')';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript['visualize_kmeans'] = function(block) {
   var value_visualize = Blockly.JavaScript.valueToCode(block, 'visualize', Blockly.JavaScript.ORDER_ATOMIC);
-  if(value_visualize != undefined){
-    var code = 'kMeans(500,500,0,0,0,'+ value_visualize +')';
+  var code;
+
+  if(value_visualize.trim() != ""){
+    code = 'kMeans(500,500,0,0,0,'+ value_visualize +')';
     return [code, Blockly.JavaScript.ORDER_NONE];
   }
-  var code = 'kMeans(500, 500, 1000, 5, 10);';
+  code = 'kMeans(500, 500, 1000, 5, 10);';
   return code;
 };

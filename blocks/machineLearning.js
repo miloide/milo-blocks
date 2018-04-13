@@ -116,7 +116,7 @@ Blockly.defineBlocksWithJsonArray([{
 },
 {
   "type": "visualize_regressions",
-  "message0": "Visualize %1",
+  "message0": "Visualize Regression %1",
   "args0": [
     {
       "type": "input_value",
@@ -232,7 +232,7 @@ Blockly.Blocks['k_nearest_neighbor'] = {
   init: function() {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
-        .appendField("K Nearest Neigbors");
+        .appendField("Train K Nearest Neigbors Model");
     this.appendValueInput("features")
         .setCheck(["Array", "Number"])
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -282,7 +282,7 @@ Blockly.Blocks['kmeans'] = {
   init: function() {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
-        .appendField("K-Means");
+        .appendField("Train K-Means Model");
     this.appendValueInput("data")
         .setCheck("Array")
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -310,7 +310,7 @@ Blockly.Blocks['kmeans_get_cluster'] = {
   init: function() {
     this.appendValueInput("cluster")
         .setCheck("kmeans")
-        .appendField("Get clusters from");
+        .appendField("Get clusters from K-Means Model");
     this.setOutput(true, null);
     this.setColour(15);
     this.setTooltip("");
@@ -322,7 +322,7 @@ Blockly.Blocks['kmeans_predict'] = {
   init: function() {
     this.appendDummyInput()
         .setAlign(Blockly.ALIGN_CENTRE)
-        .appendField("Predict using Kmeans");
+        .appendField("Predict using K-Means");
     this.appendValueInput("kmeans")
         .setCheck("kmeans")
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -342,7 +342,7 @@ Blockly.Blocks['visualize_kmeans'] = {
   init: function() {
     this.appendValueInput("visualize")
         .setCheck("kmeans")
-        .appendField("Visualize Kmeans");
+        .appendField("Visualize K-Means");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(15);
