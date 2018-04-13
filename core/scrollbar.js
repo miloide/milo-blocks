@@ -300,7 +300,7 @@ Blockly.Scrollbar.prototype.containerVisible_ = true;
  * Width of vertical scrollbar or height of horizontal scrollbar in CSS pixels.
  * Scrollbars should be larger on touch devices.
  */
-Blockly.Scrollbar.scrollbarThickness = 15;
+Blockly.Scrollbar.scrollbarThickness = 10;
 if (goog.events.BrowserFeature.TOUCH_ENABLED) {
   Blockly.Scrollbar.scrollbarThickness = 25;
 }
