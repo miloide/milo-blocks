@@ -80,7 +80,7 @@ Blockly.defineBlocksWithJsonArray([{
 },
 {
   "type": "regression_train",
-  "message0": "Train regressor classifier with  %1 Regression  %2 X %3 Y %4 Visualize %5",
+  "message0": "Train regressor classifier with  %1 Regression  %2 X %3 Y %4 Visualize Regression %5",
   "args0": [
     {
       "type": "input_dummy"
@@ -121,6 +121,7 @@ Blockly.defineBlocksWithJsonArray([{
     {
       "type": "input_value",
       "name": "NAME",
+      "align":"RIGHT",
       "check": "model"
     }
   ],
@@ -293,6 +294,10 @@ Blockly.Blocks['kmeans'] = {
     this.appendValueInput("k")
         .setCheck("Number")
         .appendField("Number of clusters");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Visualize")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "visualize");
     this.setInputsInline(false);
     this.setOutput(true, "kmeans");
     this.setColour(15);
