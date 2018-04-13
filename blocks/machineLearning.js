@@ -274,3 +274,72 @@ Blockly.Blocks['k_nearest_neighbor_predict'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['kmeans'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("K-Means");
+    this.appendValueInput("data")
+        .setCheck("Array")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("X  (Features)");
+    this.appendValueInput("iterations")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Number of iterations");
+    this.appendValueInput("k")
+        .setCheck("Number")
+        .appendField("Number of clusters");
+    this.setInputsInline(false);
+    this.setOutput(true, "kmeans");
+    this.setColour(15);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+  
+Blockly.Blocks['kmeans_get_cluster'] = {
+  init: function() {
+    this.appendValueInput("cluster")
+        .setCheck("kmeans")
+        .appendField("Get clusters from");
+    this.setOutput(true, null);
+    this.setColour(15);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['kmeans_predict'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("Predict using Kmeans");
+    this.appendValueInput("kmeans")
+        .setCheck("kmeans")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Kmeans");
+    this.appendValueInput("test")
+        .setCheck(["Number", "Array"])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Predict on");
+    this.setOutput(true, ["String", "Number"]);
+    this.setColour(15);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['visualize_kmeans'] = {
+  init: function() {
+    this.appendValueInput("visualize")
+        .setCheck("kmeans")
+        .appendField("Visualize Kmeans");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(15);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
