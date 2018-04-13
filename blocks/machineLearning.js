@@ -301,8 +301,8 @@ Blockly.Blocks['kmeans'] = {
     this.setInputsInline(false);
     this.setOutput(true, "kmeans");
     this.setColour(15);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
@@ -313,8 +313,8 @@ Blockly.Blocks['kmeans_get_cluster'] = {
         .appendField("Get clusters from");
     this.setOutput(true, null);
     this.setColour(15);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
@@ -333,8 +333,8 @@ Blockly.Blocks['kmeans_predict'] = {
         .appendField("Predict on");
     this.setOutput(true, ["String", "Number"]);
     this.setColour(15);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
@@ -346,7 +346,7 @@ Blockly.Blocks['visualize_kmeans'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(15);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
