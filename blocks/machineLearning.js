@@ -22,6 +22,8 @@
  * @author Ayush Bihani, Arjun Rao
  */
 
+'use strict';
+
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
@@ -213,15 +215,15 @@ Blockly.Extensions.registerMutator('Check_Logistic',
 Blockly.Blocks['visualize_knn'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Visualize sample KNN model");
+        .appendField("Visualize");
     this.appendValueInput("knn")
-        .appendField("Knn model")
+        .appendField("KNN model")
         .setCheck("knn");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(15);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
@@ -249,8 +251,8 @@ Blockly.Blocks['k_nearest_neighbor'] = {
     this.setOutput(true, "knn");
     this.setInputsInline(false);
     this.setColour(15);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
@@ -270,8 +272,8 @@ Blockly.Blocks['k_nearest_neighbor_predict'] = {
     this.setInputsInline(false);
     this.setOutput(true, null);
     this.setColour(15);
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setTooltip("");
+    this.setHelpUrl("");
   }
 };
 
@@ -298,7 +300,7 @@ Blockly.Blocks['kmeans'] = {
  this.setHelpUrl("");
   }
 };
-  
+
 Blockly.Blocks['kmeans_get_cluster'] = {
   init: function() {
     this.appendValueInput("cluster")
