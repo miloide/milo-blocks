@@ -96,9 +96,13 @@ Blockly.JavaScript['kmeans'] = function(block) {
   var value_data = Blockly.JavaScript.valueToCode(block, 'data', Blockly.JavaScript.ORDER_ATOMIC);
   var value_iterations = Blockly.JavaScript.valueToCode(block, 'iterations', Blockly.JavaScript.ORDER_ATOMIC);
   var value_k = Blockly.JavaScript.valueToCode(block, 'k', Blockly.JavaScript.ORDER_ATOMIC);
-  
-  var code = 'new Kmeans(' + value_k+','+ value_iterations +','+ value_data +')';
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  var checkbox_visualize = block.getFieldValue('visualize') == 'TRUE';
+  if(checkbox_visualize){
+    var code = 'new Kmeans(' + value_k+','+ value_iterations +','+ value_data +').visualize()';
+  }else{
+    var code = 'new Kmeans(' + value_k+','+ value_iterations +','+ value_data +')';
+  }
+    return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript['kmeans_get_cluster'] = function(block) {
@@ -116,6 +120,10 @@ Blockly.JavaScript['kmeans_predict'] = function(block) {
 
 Blockly.JavaScript['visualize_kmeans'] = function(block) {
   var value_visualize = Blockly.JavaScript.valueToCode(block, 'visualize', Blockly.JavaScript.ORDER_ATOMIC);
+  if(value_visualize != undefined){
+    var code = 'kMeans(500,500,0,0,0,'+ value_visualize +')';
+    return [code, Blockly.JavaScript.ORDER_NONE];
+  }
   var code = 'kMeans(500, 500, 1000, 5, 10);';
   return code;
 };
