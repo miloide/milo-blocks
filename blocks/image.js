@@ -22,6 +22,8 @@
  * @author Arjun Rao, Ayush Bihani
  */
 
+'use strict';
+
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
@@ -67,6 +69,36 @@ Blockly.defineBlocksWithJsonArray([{
   "nextStatement": true,
   "tooltip": "Labels image using mobilenet Model",
   "extensions": ["parent_tooltip_when_inline"]
+},
+{
+  "type": "img_to_pixels",
+  "lastDummyAlign0": "RIGHT",
+  "message0": "Extract pixels %1 from Image %2 to %3",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_value",
+      "name": "INPUT",
+      "check": "ImgDiv",
+      "align": "RIGHT"
+    },
+    {
+      "type": "field_variable",
+      "name": "VAR",
+      "variable": null
+    }
+  ],
+  "inputsInline": false,
+  "previousStatement": true,
+  "nextStatement": true,
+  "colour": "%{BKY_IMAGE_HUE}",
+  "tooltip": "The result is stored in a new variable.",
+  "helpUrl": "",
+  "extensions": [
+    "contextMenu_newGetVariableBlock"
+  ]
 },
 {
   "type": "mobilenet_label",

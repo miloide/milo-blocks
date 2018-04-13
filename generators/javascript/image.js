@@ -52,3 +52,14 @@ Blockly.JavaScript.img_show = function(block) {
     var code = '\nimgShow('+ arg0 +');\n';
     return code;
 };
+
+
+Blockly.JavaScript.img_to_pixels = function(block){
+    const zero = "";
+    var img = Blockly.JavaScript.valueToCode(block, 'INPUT', Blockly.JavaScript.ORDER_NONE) || zero;
+    var variable0 = Blockly.JavaScript.variableDB_.getName(
+        block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    if (img == zero) return ["",Blockly.JavaScript.ORDER_ATOMIC];
+    var code = '\npixelsFromImage('+ img +',"' + variable0 +'");\n';
+    return code;
+};
