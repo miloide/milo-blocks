@@ -212,3 +212,13 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
   }
 
 ]);
+
+Blockly.Blocks['test'] = {
+  init: function() {
+    this.appendStatementInput("NAME")
+        .setCheck(null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
