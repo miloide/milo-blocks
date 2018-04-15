@@ -39,3 +39,33 @@ Blockly.JavaScript['tf_conv2d'] = function(block) {
   '\n}';
   return code;
 };
+
+Blockly.JavaScript['tf_dense_layer'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_activation = block.getFieldValue('activation');
+  var code = '{\n'+
+        '"type":"dense",\n'+
+        '"units":'+ value_name+',\n'+
+        '"activation":' + dropdown_activation+'\n'+
+        '};'
+  return code;
+};
+
+Blockly.JavaScript['tf_model_compile'] = function(block) {
+  var value_model = Blockly.JavaScript.valueToCode(block, 'model', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_rate = Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_optimizer = block.getFieldValue('optimizer');
+  var dropdown_loss = block.getFieldValue('loss');
+  var optimizer =
+  var options = {
+
+  };
+  return code;
+};
+Blockly.JavaScript['tf_model'] = function(block) {
+  var statements_layers = Blockly.JavaScript.statementToCode(block, 'layers');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
