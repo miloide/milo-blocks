@@ -46,8 +46,8 @@ Blockly.JavaScript['tf_dense_layer'] = function(block) {
   var code = '{\n'+
         '"type":"dense",\n'+
         '"units":'+ value_name+',\n'+
-        '"activation":' + dropdown_activation+'\n'+
-        '};'
+        '"activation":"' + dropdown_activation+'"\n'+
+        '},\n'
   return code;
 };
 
@@ -56,16 +56,27 @@ Blockly.JavaScript['tf_model_compile'] = function(block) {
   var value_rate = Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_optimizer = block.getFieldValue('optimizer');
   var dropdown_loss = block.getFieldValue('loss');
-  var optimizer =
-  var options = {
-
-  };
-  return code;
+  var options = 'var options = {\n' +
+    '\n"optimizer":getOptimizer("'+dropdown_optimizer+'",'+value_rate+'),'+
+    '\n"loss":"'+dropdown_loss+'",'+
+    '\n"metrics":["accuracy"]'+
+  '}\n';
+  var code = value_model+'.compile(options)';
+  return [options,code].join("\n");
 };
+
 Blockly.JavaScript['tf_model'] = function(block) {
-  var statements_layers = Blockly.JavaScript.statementToCode(block, 'layers');
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  var value_data = Blockly.JavaScript.valueToCode(block, 'data', Blockly.JavaScript.ORDER_ATOMIC);
+  var statements_model = Blockly.JavaScript.statementToCode(block, 'model');
+  var code = 'new createModel().addLayers([' +statements_model +'],'+ value_data+')\n';
+  return [code];
+};
+
+
+Blockly.JavaScript['tf_train_model'] = function(block) {
+  var value_model = Blockly.JavaScript.valueToCode(block, 'model', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = value_model +'.train(' +value_x+','+value_y+')\n';
+  return code;
 };
