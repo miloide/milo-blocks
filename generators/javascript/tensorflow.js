@@ -57,11 +57,11 @@ Blockly.JavaScript['tf_model_compile'] = function(block) {
   var dropdown_optimizer = block.getFieldValue('optimizer');
   var dropdown_loss = block.getFieldValue('loss');
   var options = 'var options = {\n' +
-    '\n"optimizer":getOptimizer("'+dropdown_optimizer+'",'+value_rate+'),'+
-    '\n"loss":"'+dropdown_loss+'",'+
-    '\n"metrics":["accuracy"]'+
+    '\n optimizer:getOptimizer("'+dropdown_optimizer+'",'+value_rate+'),'+
+    '\n loss:"'+dropdown_loss+'",'+
+    '\n metrics:["accuracy"]'+
   '}\n';
-  var code = value_model+'.compile(options)';
+  var code = value_model+'.compileModel(options)\n';
   return [options,code].join("\n");
 };
 
@@ -69,14 +69,21 @@ Blockly.JavaScript['tf_model'] = function(block) {
   var value_data = Blockly.JavaScript.valueToCode(block, 'data', Blockly.JavaScript.ORDER_ATOMIC);
   var statements_model = Blockly.JavaScript.statementToCode(block, 'model');
   var code = 'new createModel().addLayers([' +statements_model +'],'+ value_data+')\n';
-  return [code];
+  return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
 
 Blockly.JavaScript['tf_train_model'] = function(block) {
   var value_model = Blockly.JavaScript.valueToCode(block, 'model', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  //var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
   var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = value_model +'.train(' +value_x+','+value_y+')\n';
+  var code = value_model +'.train(' +value_y+')\n';
   return code;
+};
+
+Blockly.JavaScript['tf_model_predict'] = function(block) {
+  var value_model = Blockly.JavaScript.valueToCode(block, 'model', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_tensor = Blockly.JavaScript.valueToCode(block, 'tensor', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = value_model +'.predict('+ value_tensor +')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
 };

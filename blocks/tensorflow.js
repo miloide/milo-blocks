@@ -147,7 +147,7 @@ Blockly.defineBlocksWithJsonArray([
       {
         "type": "input_value",
         "name": "data",
-        "check": "tensor",
+        "check": ["tensor","Array","Number"],
         "align": "RIGHT"
       },
       {
@@ -162,7 +162,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "tf_train_model",
-    "message0": "Train model %1 Model %2 X %3 Y %4",
+    "message0": "Train model %1 Model %2 Y %3",
     "args0": [
       {
         "type": "input_dummy"
@@ -174,19 +174,38 @@ Blockly.defineBlocksWithJsonArray([
       },
       {
         "type": "input_value",
-        "name": "x",
-        "check": "tensor",
-        "align": "RIGHT"
-      },
-      {
-        "type": "input_value",
         "name": "y",
-        "check": "tensor",
+        "check": ["tensor","Array","Number"],
         "align": "RIGHT"
       }
     ],
     "previousStatement": null,
     "nextStatement": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  },
+  {
+    "type": "tf_model_predict",
+    "message0": "Predict with %1 Model %2 Input %3",
+    "args0": [
+      {
+        "type": "input_dummy"
+      },
+      {
+        "type": "input_value",
+        "name": "model",
+        "check": "tf_model",
+        "align": "RIGHT"
+      },
+      {
+        "type": "input_value",
+        "check": ["Number","Array"],
+        "name": "tensor",
+        "align": "RIGHT"
+      }
+    ],
+    "output": null,
     "colour": 230,
     "tooltip": "",
     "helpUrl": ""
