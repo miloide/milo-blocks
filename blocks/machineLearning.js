@@ -22,6 +22,8 @@
  * @author Ayush Bihani, Arjun Rao
  */
 
+'use strict';
+
 goog.require('Blockly.Blocks');
 goog.require('Blockly');
 
@@ -78,7 +80,7 @@ Blockly.defineBlocksWithJsonArray([{
 },
 {
   "type": "regression_train",
-  "message0": "Train regressor classifier with  %1 Regression  %2 X %3 Y %4 Visualize %5",
+  "message0": "Train regressor classifier with  %1 Regression  %2 X %3 Y %4 Visualize Regression %5",
   "args0": [
     {
       "type": "input_dummy"
@@ -114,11 +116,12 @@ Blockly.defineBlocksWithJsonArray([{
 },
 {
   "type": "visualize_regressions",
-  "message0": "Visualize %1",
+  "message0": "Visualize Regression %1",
   "args0": [
     {
       "type": "input_value",
       "name": "NAME",
+      "align":"RIGHT",
       "check": "model"
     }
   ],
@@ -209,3 +212,141 @@ Blockly.Extensions.registerMutator('Check_Logistic',
   Blockly.Constants.Check_Logistic,
   Blockly.Constants.Check_Logistic_Extension
 );
+
+Blockly.Blocks['visualize_knn'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Visualize");
+    this.appendValueInput("knn")
+        .appendField("KNN model")
+        .setCheck("knn");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['k_nearest_neighbor'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("Train K Nearest Neigbors Model");
+    this.appendValueInput("features")
+        .setCheck(["Array", "Number"])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("X(Features)");
+    this.appendValueInput("labels")
+        .setCheck("Array")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Labels");
+    this.appendValueInput("k")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_LEFT)
+        .appendField("Number of Neighbors to consider");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Distance metric")
+        .appendField(new Blockly.FieldDropdown([["euclidean","euclideanDistance"], ["manhattan","manhattanDistance"]]), "distance");
+    this.setOutput(true, "knn");
+    this.setInputsInline(false);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['k_nearest_neighbor_predict'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("Predict using KNN");
+    this.appendValueInput("knn")
+        .appendField("Knn")
+        .setCheck("knn")
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.appendValueInput("test")
+        .setCheck(["Number","Array"])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Test");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['kmeans'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("Train K-Means Model");
+    this.appendValueInput("data")
+        .setCheck("Array")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("X  (Features)");
+    this.appendValueInput("iterations")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Number of iterations");
+    this.appendValueInput("k")
+        .setCheck("Number")
+        .appendField("Number of clusters");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Visualize")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "visualize");
+    this.setInputsInline(false);
+    this.setOutput(true, "kmeans");
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['kmeans_get_cluster'] = {
+  init: function() {
+    this.appendValueInput("cluster")
+        .setCheck("kmeans")
+        .appendField("Get clusters from K-Means Model");
+    this.setOutput(true, null);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['kmeans_predict'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_CENTRE)
+        .appendField("Predict using K-Means");
+    this.appendValueInput("kmeans")
+        .setCheck("kmeans")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Kmeans");
+    this.appendValueInput("test")
+        .setCheck(["Number", "Array"])
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Predict on");
+    this.setOutput(true, ["String", "Number"]);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['visualize_kmeans'] = {
+  init: function() {
+    this.appendValueInput("visualize")
+        .setCheck("kmeans")
+        .appendField("Visualize K-Means");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(15);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
