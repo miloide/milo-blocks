@@ -86,3 +86,18 @@ Blockly.JavaScript['stats_cdf_insert'] = function(block) {
   var code = value_cdf + '.append(' + value_value +','+ value_prob +')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
+
+Blockly.JavaScript['exponential_distribution'] = function(block) {
+  var value_lambda = Blockly.JavaScript.valueToCode(block, 'lambda', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'new ExponentialDistribution(' + value_lambda + ')';
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['exponential_distribution_getters'] = function(block) {
+  var dropdown_getters = block.getFieldValue('getters');
+  var value_distribution = Blockly.JavaScript.valueToCode(block, 'distribution', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  //var code = (value_x == undefined)? value_distribution + '.'+dropdown_getters+'()': value_distribution+'.'+dropdown_getters+'('+value_x+')';
+  var code = value_distribution +'.'+dropdown_getters +'('+value_x +')';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
