@@ -16,7 +16,7 @@
  */
 
 /**
- * @fileoverview Plot blocks for Milo (github.com/4and4/MiloServer).
+ * @fileoverview Neural Network generators (github.com/4and4/MiloServer).
  *
  *
  * @author Arjun Rao, Ayush Bihani
@@ -41,49 +41,60 @@ Blockly.JavaScript['tf_conv2d'] = function(block) {
 };
 
 Blockly.JavaScript['tf_dense_layer'] = function(block) {
-  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_name = Blockly.JavaScript.valueToCode(block, 'units', Blockly.JavaScript.ORDER_ATOMIC);
   var dropdown_activation = block.getFieldValue('activation');
+  var checkbox = block.getFieldValue("bias") == 'TRUE';
   var code = '{\n'+
-        '"type":"dense",\n'+
-        '"units":'+ value_name+',\n'+
-        '"activation":"' + dropdown_activation+'"\n'+
-        '},\n'
+    '\t "type":"dense",\n'+
+    '\t "units":'+ value_name+',\n'+
+    '\t "bias":' + checkbox+',\n'+
+    '\t "activation":"' + dropdown_activation+'"\n'+
+    '},\n'
   return code;
 };
 
-Blockly.JavaScript['tf_model_compile'] = function(block) {
-  var value_model = Blockly.JavaScript.valueToCode(block, 'model', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_rate = Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC);
-  var dropdown_optimizer = block.getFieldValue('optimizer');
-  var dropdown_loss = block.getFieldValue('loss');
-  var options = 'var options = {\n' +
-    '\n optimizer:getOptimizer("'+dropdown_optimizer+'",'+value_rate+'),'+
-    '\n loss:"'+dropdown_loss+'",'+
-    '\n metrics:["accuracy"]'+
-  '}\n';
-  var code = value_model+'.compileModel(options)\n';
-  return [options,code].join("\n");
-};
-
-Blockly.JavaScript['tf_model'] = function(block) {
-  var value_data = Blockly.JavaScript.valueToCode(block, 'data', Blockly.JavaScript.ORDER_ATOMIC);
+Blockly.JavaScript['tf_neural_network'] = function(block) {
   var statements_model = Blockly.JavaScript.statementToCode(block, 'model');
-  var code = 'new createModel().addLayers([' +statements_model +'],'+ value_data+')\n';
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  var setOptions = Blockly.JavaScript.statementToCode(block, 'NAME');
+  var number_features = block.getFieldValue('features');
+  if(setOptions.length > 0){
+    var code = 'new NeuralNetwork('+ number_features +',['+statements_model +'],['+ setOptions +'])';
+  } else {
+    var code = 'new NeuralNetwork('+ number_features+',['+ statements_model+'])';
+  }
+  return [code,Blockly.JavaScript.ORDER_ATOMIC];
 };
-
-
-Blockly.JavaScript['tf_train_model'] = function(block) {
+Blockly.JavaScript['tf_neural_network_train'] = function(block) {
   var value_model = Blockly.JavaScript.valueToCode(block, 'model', Blockly.JavaScript.ORDER_ATOMIC);
-  //var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_epochs = Blockly.JavaScript.valueToCode(block, 'epochs', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_x = Blockly.JavaScript.valueToCode(block, 'x', Blockly.JavaScript.ORDER_ATOMIC);
   var value_y = Blockly.JavaScript.valueToCode(block, 'y', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = value_model +'.train(' +value_y+')\n';
+  var code = value_model +'.train('+ value_epochs + ','+ value_x + ','+ value_y+');\n';
   return code;
 };
 
-Blockly.JavaScript['tf_model_predict'] = function(block) {
+Blockly.JavaScript['tf_neural_network_predict'] = function(block) {
   var value_model = Blockly.JavaScript.valueToCode(block, 'model', Blockly.JavaScript.ORDER_ATOMIC);
   var value_tensor = Blockly.JavaScript.valueToCode(block, 'tensor', Blockly.JavaScript.ORDER_ATOMIC);
   var code = value_model +'.predict('+ value_tensor +')';
   return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['tf_neural_network_optimizer'] = function(block) {
+  var dropdown_optimizer = block.getFieldValue('optimizer');
+  var value_rate = Blockly.JavaScript.valueToCode(block, 'rate', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = '{\n\t "type" : "optimizer",\n\t "optimizer" : "' + dropdown_optimizer + '",\n\t "value":'+value_rate+'\n},\n';
+  return code;
+};
+
+Blockly.JavaScript['tf_neural_network_loss'] = function(block) {
+  var dropdown_loss = block.getFieldValue('loss');
+  var code = '{\n\t "type":"loss" ,\n\t "value": "' + dropdown_loss+'"\n},\n';
+  return code;
+};
+
+Blockly.JavaScript['tf_neural_network_metrics'] = function(block) {
+  var dropdown_metrics = block.getFieldValue('metrics');
+  var code = '{\n\t "type":"metrics" ,\n\t "value": "'+dropdown_metrics+'"\n},\n';
+  return code;
 };

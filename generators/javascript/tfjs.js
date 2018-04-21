@@ -72,9 +72,3 @@ Blockly.JavaScript['tf_basic_math'] = function(block) {
     var code = value_tensor+'.'+dropdown_math + '() \n';
     return [code, Blockly.JavaScript.ORDER_NONE];
 };
-
-Blockly.JavaScript['test'] = function(block) {
-  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
-  var code = statements_name;
-  return code;
-}
