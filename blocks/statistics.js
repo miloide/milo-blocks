@@ -156,3 +156,63 @@ Blockly.Blocks['stats_cdf_insert'] = {
     this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['exponential_distribution'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Exponential Distribution");
+    this.appendValueInput("lambda")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Lambda");
+    this.setOutput(true, "exp_distribution");
+    this.setColour(230);
+    this.setTooltip("");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.defineBlocksWithJsonArray([
+  {
+    "type": "exponential_distribution_getters",
+    "message0": "Get %1 from Exponential Distribution %2 X %3",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "getters",
+        "options": [
+          [
+            "cdf",
+            "cdf"
+          ],
+          [
+            "probability",
+            "p"
+          ],
+          [
+            "log probaiblity",
+            "logp"
+          ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "distribution",
+        "check": "exp_distribution"
+      },
+      {
+        "type": "input_value",
+        "name": "x",
+        "check": [
+          "Number",
+          "Array"
+        ],
+        "align": "RIGHT"
+      }
+    ],
+    "output": null,
+    "colour": 230,
+    "tooltip": "",
+    "helpUrl": ""
+  }
+]);
