@@ -73,11 +73,11 @@ Blockly.Blocks['normal_distribution'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Normal Distribution");
-    this.appendValueInput("NAME1")
+    this.appendValueInput("MEAN")
         .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Mean");
-    this.appendValueInput("NAME2")
+    this.appendValueInput("VARIANCE")
         .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("Variance");
@@ -89,15 +89,15 @@ Blockly.Blocks['normal_distribution'] = {
 };
 Blockly.Blocks['normal_distribution_getters'] = {
   init: function() {
-    this.appendValueInput("NAME1")
+    this.appendValueInput("NORMAL")
         .setCheck("gaussian")
-        .appendField("Get ")
-        .appendField(new Blockly.FieldDropdown([["pdf","pdf"], ["cdf","cdf"], ["ppf","ppf"]]), "NAME2")
-        .appendField("From Normal Distribution");
-    this.appendValueInput("NAME3")
+        .appendField("Evaluate ")
+        .appendField(new Blockly.FieldDropdown([["PDF","pdf"], ["CDF","cdf"], ["PPF","ppf"]]), "FUNCTION_NAME")
+        .appendField("of Normal Distribution");
+    this.appendValueInput("INPUT_DATA")
         .setCheck(["Array", "Number"])
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("X");
+        .appendField("at X=");
     this.setOutput(true, null);
     this.setColour(230);
     this.setTooltip("X can either be a number or a list of numbers");
@@ -175,23 +175,23 @@ Blockly.Blocks['exponential_distribution'] = {
 Blockly.defineBlocksWithJsonArray([
   {
     "type": "exponential_distribution_getters",
-    "message0": "Get %1 from Exponential Distribution %2 X %3",
+    "message0": "Evaluate %1 of Exponential Distribution %2 at X= %3",
     "args0": [
       {
         "type": "field_dropdown",
         "name": "getters",
         "options": [
           [
-            "cdf",
+            "PDF",
+            "pdf"
+          ],
+          [
+            "CDF",
             "cdf"
           ],
           [
-            "probability",
-            "p"
-          ],
-          [
-            "log probaiblity",
-            "logp"
+            "log Probability",
+            "logProbability"
           ]
         ]
       },
