@@ -48,17 +48,17 @@ Blockly.JavaScript['stats_pmf_operations'] = function(block) {
 };
 
 Blockly.JavaScript['normal_distribution'] = function(block) {
-  var value_name1 = Blockly.JavaScript.valueToCode(block, 'NAME1', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_name2 = Blockly.JavaScript.valueToCode(block, 'NAME2', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'gaussian(' + value_name1 +' ,'+ value_name2+')';
+  var mean = Blockly.JavaScript.valueToCode(block, 'MEAN', Blockly.JavaScript.ORDER_ATOMIC);
+  var variance = Blockly.JavaScript.valueToCode(block, 'VARIANCE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'gaussian(' + mean +' ,'+ variance+')';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript['normal_distribution_getters'] = function(block) {
-  var dropdown_name2 = block.getFieldValue('NAME2');
-  var value_name1 = Blockly.JavaScript.valueToCode(block, 'NAME1', Blockly.JavaScript.ORDER_ATOMIC);
-  var value_name3 = Blockly.JavaScript.valueToCode(block, 'NAME3', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = value_name1 + '.evaluate("' + dropdown_name2 + '", ' + value_name3 + ')';
+  var functionName = block.getFieldValue('FUNCTION_NAME');
+  var gaussianObject = Blockly.JavaScript.valueToCode(block, 'NORMAL', Blockly.JavaScript.ORDER_ATOMIC);
+  var inputData = Blockly.JavaScript.valueToCode(block, 'INPUT_DATA', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = functionName + '.evaluate("' + functionName + '", ' + inputData + ')';
   return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
