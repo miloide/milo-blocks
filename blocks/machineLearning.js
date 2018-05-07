@@ -73,8 +73,8 @@ Blockly.defineBlocksWithJsonArray([{
   ],
   "output": "regression",
   "colour": 15,
-  "tooltip": "",
-  "helpUrl": "",
+  "tooltip": "Perform Regression",
+  "helpUrl": "https://www.analyticsvidhya.com/blog/2015/08/comprehensive-guide-regression/",
   "mutator":"Check_Logistic",
   "extension":"Check_Logistic_Extension"
 },
@@ -111,8 +111,8 @@ Blockly.defineBlocksWithJsonArray([{
   "inputsInline": false,
   "output": "model",
   "colour": 15,
-  "tooltip": "",
-  "helpUrl": ""
+  "tooltip": "Trains the regression model",
+  "helpUrl": "https://www.youtube.com/watch?v=r4mwkS2T9aI"
 },
 {
   "type": "visualize_regressions",
@@ -128,7 +128,7 @@ Blockly.defineBlocksWithJsonArray([{
   "previousStatement": null,
   "nextStatement": null,
   "colour": 15,
-  "tooltip": "",
+  "tooltip": "Visualize regression model",
   "helpUrl": ""
 }]);
 
@@ -147,7 +147,7 @@ Blockly.Blocks['regression_test'] = {
     this.setOutput(true, null);
     this.setColour(15);
     this.setTooltip(" \"Tests a regresion model on the data\"");
-    this.setHelpUrl("");
+    this.setHelpUrl("https://www.youtube.com/watch?v=r4mwkS2T9aI");
   }
 };
 
@@ -223,7 +223,7 @@ Blockly.Blocks['visualize_knn'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(15);
-    this.setTooltip("");
+    this.setTooltip("Visualize a K-Nearest-Neighbor model");
     this.setHelpUrl("");
   }
 };
@@ -252,8 +252,8 @@ Blockly.Blocks['k_nearest_neighbor'] = {
     this.setOutput(true, "knn");
     this.setInputsInline(false);
     this.setColour(15);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setTooltip("Apply K Nearest Neighbor algorithm");
+    this.setHelpUrl("https://www.geeksforgeeks.org/k-nearest-neighbours/");
   }
 };
 
@@ -273,8 +273,8 @@ Blockly.Blocks['k_nearest_neighbor_predict'] = {
     this.setInputsInline(false);
     this.setOutput(true, null);
     this.setColour(15);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setTooltip("Predict with K-Nearest-Neighbor model");
+    this.setHelpUrl("https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/");
   }
 };
 
@@ -301,8 +301,8 @@ Blockly.Blocks['kmeans'] = {
     this.setInputsInline(false);
     this.setOutput(true, "kmeans");
     this.setColour(15);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setTooltip("Perform K Means clustering");
+    this.setHelpUrl("https://www.datascience.com/blog/k-means-clustering");
   }
 };
 
@@ -333,7 +333,7 @@ Blockly.Blocks['kmeans_predict'] = {
         .appendField("Predict on");
     this.setOutput(true, ["String", "Number"]);
     this.setColour(15);
-    this.setTooltip("");
+    this.setTooltip("Predict with K-Means model");
     this.setHelpUrl("");
   }
 };
@@ -346,7 +346,7 @@ Blockly.Blocks['visualize_kmeans'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(15);
-    this.setTooltip("");
+    this.setTooltip("Visualize K-Means model");
     this.setHelpUrl("");
   }
 };

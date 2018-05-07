@@ -38,8 +38,8 @@ Blockly.Blocks['stats_construct_pmf'] = {
         .appendField(new Blockly.FieldDropdown([[" Hist Map From List","makeHistFromList"], [" Pmf Map From List","makePmfFromList"],[" Pmf Map from Frequencies","makePmfFromHist"]]), "NAME");
     this.setOutput(true, null);
     this.setColour(230);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setTooltip("Constructs a probaiblity mass function");
+    this.setHelpUrl("https://en.wikipedia.org/wiki/Probability_mass_function");
   }
 };
 Blockly.Blocks['stats_pmf_getters'] = {
@@ -51,7 +51,7 @@ Blockly.Blocks['stats_pmf_getters'] = {
         .appendField("From Map");
     this.setOutput(true,null);
     this.setColour(230);
-    this.setTooltip("");
+    this.setTooltip("Retrieve properties of probability mass function");
     this.setHelpUrl("");
   }
 };
@@ -65,7 +65,7 @@ Blockly.Blocks['stats_pmf_operations'] = {
             .appendField("From Pmf");
     this.setOutput(true,null);
     this.setColour(230);
-    this.setTooltip("");
+    this.setTooltip("Perform Operations on the probability mass function");
     this.setHelpUrl("");
   }
 };
@@ -83,8 +83,8 @@ Blockly.Blocks['normal_distribution'] = {
         .appendField("Variance");
     this.setOutput(true, null);
     this.setColour(230);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setTooltip("Constructs a normal distribution function");
+    this.setHelpUrl("https://en.wikipedia.org/wiki/Normal_distribution");
   }
 };
 Blockly.Blocks['normal_distribution_getters'] = {
@@ -115,8 +115,8 @@ Blockly.Blocks['stats_construct_cdf'] = {
         .appendField(new Blockly.FieldDropdown([["CDF from Pmf ","makeCdfFromPmf"], ["CDF from Hist","MakeCdfFromHist"], ["CDF  from List","MakeCdfFromList"]]), "SRCTYPE");
     this.setOutput(true, "stats_cdf");
     this.setColour(230);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setTooltip("Constructs a cumulative distribution function");
+    this.setHelpUrl("https://en.wikipedia.org/wiki/Cumulative_distribution_function");
   }
 };
 
@@ -132,7 +132,7 @@ Blockly.Blocks['stats_cdf_get'] = {
         .appendField("for");
     this.setColour(230);
     this.setOutput(true, "Number");
-    this.setTooltip("");
+    this.setTooltip("Retrieve properties of cumulative distribution function");
     this.setHelpUrl("");
   }
 };
@@ -167,8 +167,8 @@ Blockly.Blocks['exponential_distribution'] = {
         .appendField("Lambda");
     this.setOutput(true, "exp_distribution");
     this.setColour(230);
-    this.setTooltip("");
-    this.setHelpUrl("");
+    this.setTooltip("Constructs an exponential distribution function");
+    this.setHelpUrl("https://en.wikipedia.org/wiki/Exponential_distribution");
   }
 };
 
@@ -212,7 +212,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     "output": null,
     "colour": 230,
-    "tooltip": "",
+    "tooltip": "Retrieves properties from exponential distribution function",
     "helpUrl": ""
   }
 ]);

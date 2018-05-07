@@ -96,8 +96,8 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 180,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Activation function decides, whether a neuron should be activated or not",
+    "helpUrl": "https://www.geeksforgeeks.org/activation-functions-neural-networks/"
   },
   {
     "type": "tf_neural_network",
@@ -127,8 +127,8 @@ Blockly.defineBlocksWithJsonArray([
     ],
     "output": null,
     "colour": 160,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Creates a neural network model",
+    "helpUrl": "https://towardsdatascience.com/deep-learning-feedforward-neural-network-26a6705dbdc7"
   },
   {
     "type": "tf_neural_network_train",
@@ -163,8 +163,8 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 160,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Trains a neural network model",
+    "helpUrl": "https://towardsdatascience.com/how-do-we-train-neural-networks-edd985562b73"
   },
   {
     "type": "tf_neural_network_predict",
@@ -188,7 +188,7 @@ Blockly.defineBlocksWithJsonArray([
     ],
     "output": null,
     "colour": 160,
-    "tooltip": "",
+    "tooltip": "Predict with neural network model",
     "helpUrl": ""
   },
   {
@@ -230,8 +230,8 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 180,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "Optimization algorithms helps to minimize (or maximize) an Objective function",
+    "helpUrl": "https://towardsdatascience.com/neural-network-optimization-algorithms-1a44c282f61d"
   },
   {
     "type": "tf_neural_network_loss",
@@ -255,8 +255,8 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 180,
-    "tooltip": "",
-    "helpUrl": ""
+    "tooltip": "A loss function is used to optimize the parameter values in a neural network model",
+    "helpUrl": "https://medium.com/data-science-group-iitr/loss-functions-and-optimization-algorithms-demystified-bb92daff331c"
   },
   {
     "type": "tf_neural_network_metrics",
@@ -276,7 +276,7 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 180,
-    "tooltip": "",
+    "tooltip": "Defines the metric to be used while training neural network",
     "helpUrl": ""
   }
 ]);

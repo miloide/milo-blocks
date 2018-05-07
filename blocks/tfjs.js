@@ -37,8 +37,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     }],
     "output": "tensor",
     "colour": "%{BKY_ML_HUE}",
-    "helpUrl": "https://deeplearnjs.org/docs/api/classes/scalar.html",
-    "tooltip": "A Deeplearn.js scalar",
+    "helpUrl": "https://js.tensorflow.org/api/0.10.0/#scalar",
+    "tooltip": "Creates a scalar",
     "extensions": ["parent_tooltip_when_inline"]
   },
   {
@@ -52,8 +52,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "inputsInline": true,
     "output": "tensor",
     "colour": "%{BKY_ML_HUE}",
-    "helpUrl": "https://deeplearnjs.org/docs/api/classes/array1d.html",
-    "tooltip": "A Deeplearn.js Array1D",
+    "helpUrl": "https://js.tensorflow.org/api/0.10.0/#tensor",
+    "tooltip": "Creates an Array",
     "extensions": ["parent_tooltip_when_inline"]
   },
 
@@ -115,8 +115,8 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "inputsInline": false,
     "output": "tensor",
     "colour": "%{BKY_ML_HUE}",
-    "tooltip": "",
-    "helpUrl": "https://deeplearnjs.org/docs/api/classes/ndarraymath.html"
+    "tooltip": "Performs basic arithmetic operations on scalars and vectors",
+    "helpUrl": ""
   },
   {
     "type": "tf_print",
@@ -207,8 +207,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     ],
     "output": null,
     "colour": 230,
-    "tooltip": "",
+    "tooltip": "Performs basic mathematical operations",
     "helpUrl": ""
   }
-
 ]);
